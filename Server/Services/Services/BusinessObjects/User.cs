@@ -8,8 +8,11 @@ namespace Services.BusinessObjects
         public string userName { get; set; }
         public string password { get; set; }
         public bool isAuthenticate { get; set; }
+        public string role { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
 
-        public bool Authenticate()
+        public void Authenticate()
         {
             MySqlConnection connection = new MySqlConnection();
             connection.ConnectionString = "Server=leadersdb.ctg6ujawfiqo.us-west-2.rds.amazonaws.com;Port=3306;Database=leadersacademy;Uid=awsdbpb;Pwd=Welcome123; ";
@@ -24,7 +27,15 @@ namespace Services.BusinessObjects
             DataSet ds = new DataSet();
             adapter.Fill(ds);
 
-            return (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0);
+            this.isAuthenticate = false;
+
+            if(ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                this.isAuthenticate = true;
+                this.firstName = ds.Tables[0].Rows[0]["FirstName"].ToString();
+                this.lastName = ds.Tables[0].Rows[0]["LastName"].ToString();
+                this.role = ds.Tables[0].Rows[0]["Role"].ToString();
+            }
         }
     }
 }

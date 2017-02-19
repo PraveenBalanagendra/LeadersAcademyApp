@@ -13,7 +13,7 @@ namespace Services
         public User Login(string userName, string password)
         {
             User user = new User() { userName = userName, password = password };
-            user.isAuthenticate = user.Authenticate();
+            user.Authenticate();
 
             return user; // JsonConvert.SerializeObject(user);
         }
