@@ -18,6 +18,10 @@ function createDatabase()
 	});
 	
 	myDB.transaction(function(transaction) {
+		transaction.executeSql('CREATE TABLE IF NOT EXISTS user (firstName, lastName, role)', [], null, null);
+	});
+
+	myDB.transaction(function(transaction) {
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['About' + 'AcademyHeader','Leaders Academy','ಲಿೀಡರ್ ಅಕಾಡೆಮಿ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['About' + 'BalaSirHeader','Balakrishnan V','ಬಾಲಕೃಷ್ಣ ವಿ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['About' + 'Academy','We began our journey on 18th DEC 2003 to make a difference to the people who wants to reach their pinnacle of their potential by giving confidence to their heart and clarity to their mind. Holistic development on the aspects of life (Personal, Family, Social, Intellectual, Financial, Spiritual) happily, peacefully, legally, ethically and healthily. Leaders Academy programs are specially designed for life long results. It is an inspirational, interactive, experiential life transforming development program to explore the real YOU in you','ನಾವು ಅವರ ಮನಸ್ಸಿಗೆ ತಮ್ಮ ಹೃದಯ ಮತ್ತು ಸ್ಪಷ್ಟತೆ ವಿಶ್ವಾಸ ನೀಡುವ ಮೂಲಕ ತಮ್ಮ ಸಾಮರ್ಥ್ಯವನ್ನು ತಮ್ಮ ಪರಾಕಾಷ್ಠೆಯನ್ನು ತಲುಪಲು ಬಯಸಿದೆ ಜನರಿಗೆ ಒಂದು ವ್ಯತ್ಯಾಸ ಮಾಡಲು 18 ಡಿಸೆಂಬರ್ 2003 ರಂದು ನಮ್ಮ ಪ್ರಯಾಣ ಆರಂಭಿಸಿತು. ಜೀವನದ ಅಂಶಗಳನ್ನು ಸಮಗ್ರ ಅಭಿವೃದ್ಧಿ (ವೈಯಕ್ತಿಕ, ಕೌಟುಂಬಿಕ, ಸಾಮಾಜಿಕ, ಬೌದ್ಧಿಕ, ಹಣಕಾಸು, ಆಧ್ಯಾತ್ಮಿಕ) ನೆಮ್ಮದಿಯಿಂದ, ಶಾಂತಿಯುತವಾಗಿ, ಕಾನೂನುಬದ್ಧವಾಗಿ, ನೈತಿಕವಾಗಿ ಮತ್ತು ಆರೋಗ್ಯಕರ. ನಾಯಕರು ಅಕಾಡೆಮಿ ಕಾರ್ಯಕ್ರಮಗಳು ಜೀವನದ ದೀರ್ಘ ಫಲಿತಾಂಶಗಳು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ಇದು ಒಂದು ಸ್ಪೂರ್ತಿದಾಯಕ, ಪರಸ್ಪರ, ಅನುಭವದ ಜೀವನದಲ್ಲಿ ನೀವು ನೈಜ ನೀವು ಅನ್ವೇಷಿಸಲು ಅಭಿವೃದ್ಧಿ ಕಾರ್ಯಕ್ರಮದ ಪರಿವರ್ತಿಸುವ ಇದೆ'], null, null);
@@ -59,6 +63,7 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Settings','Settings','ಸೆಟ್ಟಿಂಗ್ಗಳು'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'FAQ','FAQ','ಪ್ರಶ್ಣೋತ್ತರ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Login','Login','ಲಾಗಿನ್'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Logout','Logout','ಲಾಗೌಟ್'], null, null);
 	});
 	
 	myDB.transaction(function(transaction) {

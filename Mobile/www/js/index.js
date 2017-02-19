@@ -30,6 +30,10 @@ $(document).ready(function(){
 });
 
 function onDeviceReady(){
+	if (typeof logoutFlag !== 'undefined') {
+		logout();
+	}
+	
 	document.addEventListener("backbutton", BackKeyDown, true);
 	
 	myDB = window.sqlitePlugin.openDatabase({name: "leaders.db", location: 'default'});
@@ -54,6 +58,27 @@ function populatePage()
 		$(this).append(localStorage.getItem($(this).attr('id')));
 	});
 	
+	// Display Login User details
+	myDB = window.sqlitePlugin.openDatabase({name: "leaders.db", location: 'default'});
+	myDB.transaction(function(transaction) {
+		transaction.executeSql("SELECT firstName, lastName, role FROM user", [], 
+		function (tx, results) {
+			var len = results.rows.length, i;
+			if(len > 0)
+			{
+				$('#login').hide();
+				$('#logout').show();
+				$('#LoginUser').append(results.rows.item(0).firstName + ' ' + results.rows.item(0).lastName);
+			}
+			else{
+				$('#logout').hide();
+				$('#login').show();
+			}
+		}, null);
+	});
+
+	
+	
 	$('.showOnLoad').each(function(index){
 		$(this).show();
 	});
@@ -68,19 +93,40 @@ function authenticateUser()
 			dataType: 'jsonp',
 			url: url,
 			success: function (data) {
-				if(data.isAuthenticate == false)
-									$( "#dialog" ).dialog({
-					modal: true,
-					buttons: {
-						Ok: function() {
-							$( this ).dialog( "close" );
+				if(data.isAuthenticate == false){
+					$( "#dialog" ).dialog({
+						modal: true,
+						buttons: {
+							Ok: function() {
+								$( this ).dialog( "close" );
+							}
 						}
-					}
-				});
-				else alert('Authentication Success');
+					});
+				}
+				else{
+					// Set the user details in the SQLite and redirect to About page
+					myDB = window.sqlitePlugin.openDatabase({name: "leaders.db", location: 'default'});
+					myDB.transaction(function(transaction) {
+						transaction.executeSql('INSERT INTO user (firstName, lastName, role) VALUES (?,?,?)', [data.firstName,data.lastName,data.role], 
+							function(tx, results){window.location = "about.html";}, 
+							function(){alert('error');}
+						);
+					});
+				}
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				alert('Data fetch error' + errorThrown);
+				alert('Authentication error. Please verify if the internet is turned on.');
 			}
 		});
+}
+
+function logout(){
+	myDB = window.sqlitePlugin.openDatabase({name: "leaders.db", location: 'default'});
+	myDB.transaction(function(transaction) {
+		transaction.executeSql('DELETE FROM user', [], 
+			function(tx, results){window.location = "about.html";}, 
+			function(){alert('error');}
+		);
+	});
+
 }
