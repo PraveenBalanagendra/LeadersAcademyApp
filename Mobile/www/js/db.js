@@ -58,6 +58,7 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Events','Events','ಕಾರ್ಯಕ್ರಮಗಳು'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Settings','Settings','ಸೆಟ್ಟಿಂಗ್ಗಳು'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'FAQ','FAQ','ಪ್ರಶ್ಣೋತ್ತರ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Login','Login','ಲಾಗಿನ್'], null, null);
 	});
 	
 	myDB.transaction(function(transaction) {

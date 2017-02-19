@@ -40,12 +40,14 @@
 
     <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
     <link rel="stylesheet" href="css/material.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/jquery-ui.js"></script>
     <script src="js/material.min.js"></script>
     <link rel="stylesheet" href="css/material_Icons.css">    
     <link rel="stylesheet" href="css/kc.fab.css">
-    <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/kc.fab.min.js"></script>
-    <title>Leaders App</title>
+    <title>Login</title>
 </head>
 
 <body>
@@ -55,7 +57,7 @@
             mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title content" id="NavigationSettings"></span>
+          <span class="mdl-layout-title content" id="NavigationLogin"></span>
           <div class="mdl-layout-spacer"></div>
           <div class="kc_fab_wrapper"></div>
         </div>
@@ -76,57 +78,45 @@
       </div>
       <main class="mdl-layout__content">
         <div class="page-content" style="text-align:center; width:100%;">
-            <table class="mdl-data-table mdl-js-data-table mdl-data-table" style="width: 100%">
-              <thead>
-                <tr>
-                  <th class="mdl-data-table__cell--non-numeric" colspan="2">Language</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="mdl-data-table__cell--non-numeric">English</td>
-                  <td><input type="radio" id="list-option-1" class="mdl-radio__button" name="language" value="english" checked /></td>
-                </tr>
-                <tr>
-                  <td class="mdl-data-table__cell--non-numeric">ಕನ್ನಡ</td>
-                  <td><input type="radio" id="list-option-2" class="mdl-radio__button" name="language" value="kannada"  /></td>
-                </tr>
-              </tbody>
-            </table>
-<!--            <br />
-            <table class="mdl-data-table mdl-js-data-table mdl-data-table" style="width: 100%">
-              <thead>
-                <tr>
-                  <th class="mdl-data-table__cell--non-numeric" colspan="2">Synch Interval</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="mdl-data-table__cell--non-numeric">1 Hr</td>
-                  <td><input type="radio" id="list-option-3" class="mdl-radio__button" name="interval" value="1" checked /></td>
-                </tr>
-                <tr>
-                  <td class="mdl-data-table__cell--non-numeric">6 Hr</td>
-                  <td><input type="radio" id="list-option-4" class="mdl-radio__button" name="interval" value="2"  /></td>
-                </tr>
-              </tbody>
-            </table>-->
-            <br />
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="width:200px;" onclick="fnUpdateSettings();"><i class="material-icons">save</i>&nbsp;&nbsp;Save</button>
+			<table class="mdl-data-table" style="white-space:wrap;width:100%;">
+				<tbody>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric">Only people who have undergone Leaders Workshop program will have login. To get the login credentials please contact +91 9980977955.</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="txtUsername">
+								<label class="mdl-textfield__label" for="sample3">UserName<label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="password" id="txtPassword">
+								<label class="mdl-textfield__label" for="sample3">Password<label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align:center;">
+							<button onclick="authenticateUser()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="width:200px;">
+								<i class="material-icons">input</i>&nbsp;&nbsp;Login
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
         </div>
       </main>
     </div>
+	<div id="dialog" title="Whoopss !!!">
+		<p>Authentication Failed</p>
+	</div>
 </div>
 	<script type="text/javascript" src="js/db.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript">
-	function fnUpdateSettings(){
-		localStorage.clear();
-		myDB.transaction(function(transaction) {
-			transaction.executeSql("UPDATE setting set value = ?", [$("input:radio[name=language]:checked").val()], function(txt, message){getLanguage(); window.location = "settings.html";}, null);
-		});
-	}
-	</script>
 </body>
 
 </html>
