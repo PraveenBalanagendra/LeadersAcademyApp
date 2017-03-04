@@ -73,6 +73,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\Location.cs" />
     <Compile Include="BusinessObjects\User.cs" />
     <Compile Include="ILeadersService.cs" />
     <Compile Include="LeadersService.svc.cs">

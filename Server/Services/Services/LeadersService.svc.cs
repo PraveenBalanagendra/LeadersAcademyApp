@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
 using Services.BusinessObjects;
 using System.ServiceModel.Web;
 
@@ -17,7 +17,10 @@ namespace Services
 
             return user; // JsonConvert.SerializeObject(user);
         }
-
-       
+    
+        public List<Location> GetLocation()
+        {
+            return Location.GetLocations();
+        }
     }
 }

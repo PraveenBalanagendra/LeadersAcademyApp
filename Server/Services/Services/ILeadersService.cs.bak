@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 using System.ServiceModel.Web;
 using Services.BusinessObjects;
 
@@ -12,9 +11,5 @@ namespace Services
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/Login/{userName}/{password}", ResponseFormat = WebMessageFormat.Json)]
         User Login(string userName, string password);
-
-        [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "/location/list", ResponseFormat = WebMessageFormat.Json)]
-        List<Location> GetLocation();
     }
 }
