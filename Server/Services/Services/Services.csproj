@@ -75,6 +75,8 @@
   <ItemGroup>
     <Compile Include="BusinessObjects\Location.cs" />
     <Compile Include="BusinessObjects\User.cs" />
+    <Compile Include="BusinessObjects\Workshop.cs" />
+    <Compile Include="DataAccess\DAL.cs" />
     <Compile Include="ILeadersService.cs" />
     <Compile Include="LeadersService.svc.cs">
       <DependentUpon>LeadersService.svc</DependentUpon>

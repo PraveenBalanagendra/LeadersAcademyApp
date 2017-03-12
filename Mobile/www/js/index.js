@@ -67,12 +67,14 @@ function populatePage()
 			if(len > 0)
 			{
 				$('#login').hide();
+				$('#divAdmin').show();
 				$('#logout').show();
 				$('#LoginUser').append(results.rows.item(0).firstName + ' ' + results.rows.item(0).lastName);
 			}
 			else{
 				$('#logout').hide();
 				$('#login').show();
+				$('#divAdmin').hide();
 			}
 		}, null);
 	});
@@ -84,42 +86,6 @@ function populatePage()
 	});
 }
 
-function authenticateUser()
-{
-	var url = "http://leaders-dev.us-west-2.elasticbeanstalk.com/leadersservice.svc/login/" + $("#txtUsername").val() + "/" + $("#txtPassword").val();
-	
-	$.ajax({
-			type: "GET",
-			dataType: 'jsonp',
-			url: url,
-			success: function (data) {
-				if(data.isAuthenticate == false){
-					$( "#dialog" ).dialog({
-						modal: true,
-						buttons: {
-							Ok: function() {
-								$( this ).dialog( "close" );
-							}
-						}
-					});
-				}
-				else{
-					// Set the user details in the SQLite and redirect to About page
-					myDB = window.sqlitePlugin.openDatabase({name: "leaders.db", location: 'default'});
-					myDB.transaction(function(transaction) {
-						transaction.executeSql('INSERT INTO user (firstName, lastName, role) VALUES (?,?,?)', [data.firstName,data.lastName,data.role], 
-							function(tx, results){window.location = "about.html";}, 
-							function(){alert('error');}
-						);
-					});
-				}
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				alert('Authentication error. Please verify if the internet is turned on.');
-			}
-		});
-}
-
 function logout(){
 	myDB = window.sqlitePlugin.openDatabase({name: "leaders.db", location: 'default'});
 	myDB.transaction(function(transaction) {
@@ -129,4 +95,16 @@ function logout(){
 		);
 	});
 
+}
+
+function telephone(number){
+	window.open("tel:+" + number);
+}
+
+function maps(coordinates, name){
+	window.open("geo:" + coordinates + "?q=" + coordinates + "(" + name + ")");
+}
+
+function youtube(link){
+	window.open(link);
 }

@@ -106,6 +106,40 @@
 </div>
 	<script type="text/javascript" src="js/db.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/service.js"></script>
+	<script>
+	var successCallback = function (data) {
+		if(data.isAuthenticate == false){
+			$( "#dialog" ).dialog({
+				modal: true,
+				buttons: {
+					Ok: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			});
+		}
+		else{
+			// Set the user details in the SQLite and redirect to About page
+			myDB = window.sqlitePlugin.openDatabase({name: "leaders.db", location: 'default'});
+			myDB.transaction(function(transaction) {
+				transaction.executeSql('INSERT INTO user (firstName, lastName, role) VALUES (?,?,?)', [data.firstName,data.lastName,data.role], 
+					function(tx, results){window.location = "about.html";}, 
+					function(){alert('error');}
+				);
+			});
+		}
+	};
+	
+	var errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
+		alert('Authentication error. Please verify if the internet is turned on.');
+	}
+	
+	function authenticateUser(){
+		invokeService('/login/' + $('#txtUsername').val() + '/' + $('#txtPassword').val())
+	}
+	</script>
+	
 </body>
 
 </html>

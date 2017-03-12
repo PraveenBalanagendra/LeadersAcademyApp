@@ -52,6 +52,13 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['FAQ' + '2','30,000+ participants and growing','ಭಾಗವಹಿಸಿದವರ 30,000 ಮತ್ತು ಬೆಳೆಯುತ್ತಿರುವ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['FAQ' + '3','At the end of the programme, if you still don’t like the programme, the amount is completely refunded with no questions asked.','ಕಾರ್ಯಕ್ರಮದ ಕೊನೆಯಲ್ಲಿ, ನಿಮಗೆ ಇನ್ನೂ ಪ್ರೋಗ್ರಾಂ ಇಷ್ಟವಾಗದಿದ್ದರೆ, ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಲ್ಲದೆ ಸಂಪೂರ್ಣವಾಗಿ ಹಣ ಮರು ಆಗಲಿದೆ '], null, null);
 
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'KHeader','Kurukshetra','ಕುರುಕ್ಷೇತ್ರ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'KContent','Kurukshetra Series talks about the topic and provides an in depth knowledge and clarity. The topics ranges from Family, Self Confidence, Entertainment to Enlightenment, Parenting etc. ','ಕುರುಕ್ಷೇತ್ರದ ಬಗ್ಗೆ ವಿವರಣೆ ಬರೆಯಬೇಕು'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'KLink','K11 – Self Confidence','ಕೆ11 - ಆತ್ಮವಿಶ್ವಾಸ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechHeader','Speech Contest','ಸ್ಪೀಚ್ ಕಾಂಟೆಸ್ಟ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechContent','Speech Contest allows the member of Leaders Academy to contest for the best speech of the year.','ಸ್ಪೀಚ್ ಕಾಂಟೆಸ್ಟ ಬಗ್ಗೆ ವಿವರಣೆ ಬರೆಯಬೇಕು'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechLink1','Best Top 20 Speech – 2015','Best Top 20 Speech – 2015'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechLink2','Best Top 20 Speech – 2016','Best Top 20 Speech – 2016'], null, null);
     });
 	
 	// Create Navigation Contents
@@ -64,6 +71,7 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'FAQ','FAQ','ಪ್ರಶ್ಣೋತ್ತರ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Login','Login','ಲಾಗಿನ್'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Logout','Logout','ಲಾಗೌಟ್'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Gallery','Gallery','ಗ್ಯಾಲರಿ'], null, null);
 	});
 	
 	myDB.transaction(function(transaction) {

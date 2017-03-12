@@ -110,9 +110,9 @@
     <access origin="*" />
 	<allow-intent href="tel:*" />
 	<allow-intent href="geo:*" />
-    <!-- <allow-intent href="http://*/*" />
+    <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-intent href="sms:*" />
+    <!-- <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <platform name="android">
         <allow-intent href="market:*" />

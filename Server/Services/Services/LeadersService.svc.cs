@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Services.BusinessObjects;
 using System.ServiceModel.Web;
 
@@ -21,6 +22,23 @@ namespace Services
         public List<Location> GetLocation()
         {
             return Location.GetLocations();
+        }
+
+        public void AddLocation(string name, string contact, string address, string coordinates)
+        {
+            Location location = new Location() { name = name, address = address, geocoordinates = coordinates, contact = contact };
+            location.AddLocation();
+        }
+
+        public void AddWorkshop(string locationId, string dateTimes)
+        {
+            Workshop workshop = new Workshop() { locationId = locationId, dateTimes = dateTimes };
+            workshop.AddWorkshop();
+        }
+
+        public List<Workshop> GetWorkshop()
+        {
+            return Workshop.GetWorWorkshops();
         }
     }
 }
