@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+    <link rel="stylesheet" href="css/material.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/jquery-ui.js"></script>
+    <script src="js/material.min.js"></script>
+    <link rel="stylesheet" href="css/material_Icons.css">    
+    <link rel="stylesheet" href="css/kc.fab.css">
+	<link rel='stylesheet prefetch' href='css/mdl-selectfield.min.css'>
+    <script src="js/kc.fab.min.js"></script>
+    <title>User Admin</title>
+</head>
+
+<body>
+<div class="showOnLoad" style="width:100%;">
+    <script type="text/javascript" src="cordova.js"></script>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">User Admin</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="kc_fab_wrapper"></div>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+		<script type="text/javascript" src="js/navigation.js"></script>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content">
+			<table class="mdl-data-table" style="white-space:wrap;width:100%;">
+				<tbody>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap; font-weight:bold;">Users</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:no-wrap;" id="teamTable">
+							<div class="mdl-textfield mdl-js-textfield" style="width:85%;">
+								<input class="mdl-textfield__input" type="text" id="sample1">
+								<label class="mdl-textfield__label" for="sample1">Search by name / phone number</label>
+							</div>
+							<i class="material-icons">search</i>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<table class="mdl-data-table" style="white-space:wrap;width:100%;">
+				<tbody>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap; font-weight:bold;">Add / Edit User</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="txtLoginName">
+								<label class="mdl-textfield__label" for="sample3">Login Name<label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="password" id="txtPassword">
+								<label class="mdl-textfield__label" for="sample3">Password<label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="txtFName">
+								<label class="mdl-textfield__label" for="sample3">First Name<label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="txtLName">
+								<label class="mdl-textfield__label" for="sample3">Last Name<label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="txtPhone">
+								<label class="mdl-textfield__label" for="sample3">Contact Number<label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="txDOB">
+								<label class="mdl-textfield__label" for="sample3">Date Of Birth (dd-mm-yyyy)<label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="txtProfession">
+								<label class="mdl-textfield__label" for="sample3">Profession<label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="txtAdmissionCardNo">
+								<label class="mdl-textfield__label" for="sample3">Admission Card No.<label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:no-wrap;">
+							<div class="mdl-selectfield mdl-js-selectfield">
+								<select class="mdl-selectfield__select" id="ddlJoiningType" name="ddlJoiningType">
+								  <option value=""></option>
+								</select>
+								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
+								<label class="mdl-selectfield__label" for="ddlJoiningType">Joining Type</label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:no-wrap;">
+							<div class="mdl-selectfield mdl-js-selectfield">
+								<select class="mdl-selectfield__select" id="ddlTeam" name="ddlTeam">
+								  <option value=""></option>
+								</select>
+								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
+								<label class="mdl-selectfield__label" for="ddlTeam">Team</label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:no-wrap;">
+							<div class="mdl-selectfield mdl-js-selectfield">
+								<select class="mdl-selectfield__select" id="ddlRole" name="ddlRole">
+								  <option value=""></option>
+								</select>
+								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
+								<label class="mdl-selectfield__label" for="ddlRole">Role</label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:no-wrap;">
+							<div style="width:90%">
+								<table style="width:100%;"><tr><td style="text-align:left;padding-left:0px;">Workshop</td>
+								<td style="text-align:right;"><i class="material-icons" onclick="showWorkshop()">list</i></td></tr></table>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align:center;">
+							<button onclick="addUser()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="width:200px;">
+								<i class="material-icons">save</i>&nbsp;&nbsp;Save
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+      </main>
+    </div>
+	<div id="dialog" title="Workshop">
+		<table id="tblWorkshops">
+		</table>
+	</div>
+</div>
+	<script type="text/javascript" src="js/db.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/service.js"></script>
+	<script>
+	function showWorkshop(){
+		$( "#dialog" ).dialog({
+			modal: true,
+			buttons: {
+				Ok: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+	}
+	
+	var successCallback = function (data) {	
+		$.each(data.role, function (i, item) {
+			$('#ddlRole').append($('<option>', { 
+				value: item.id,
+				text : item.name 
+			}));
+		});
+		
+		$.each(data.team, function (i, item) {
+			$('#ddlTeam').append($('<option>', { 
+				value: item.id,
+				text : item.name 
+			}));
+		});
+		
+		$.each(data.joiningType, function (i, item) {
+			$('#ddlJoiningType').append($('<option>', { 
+				value: item.id,
+				text : item.name 
+			}));
+		});
+		
+		$.each(data.workshop, function (i, item) {
+			$('#tblWorkshops').append("<tr><td style='text-align:left;vertical-align:top;'>" + item.id + "</td><td style='text-align:left;vertical-align:top;'>" + item.locationName + "</td><td style='text-align:left;vertical-align:top;'>" + item.dateTimes + "</td><td><input type='checkbox' id='cb'" + i + " /></td></tr>");
+		});
+	};
+	
+	var errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
+		alert('Whooops .. something not correct !!!');
+	}
+	
+	function addTeam(){
+		invokeService("/team/add/" + $("#txtTeamName").val() + "/" + $("#txtContact").val());
+		window.location = "teamAdmin.html";
+	}
+	
+	invokeService("/masterdata");
+	</script>
+</body>
+</html>

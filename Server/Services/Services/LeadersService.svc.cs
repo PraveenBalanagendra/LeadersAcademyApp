@@ -38,7 +38,44 @@ namespace Services
 
         public List<Workshop> GetWorkshop()
         {
-            return Workshop.GetWorWorkshops();
+            return Workshop.GetWorkshops();
+        }
+
+        public List<Team> GetTeam()
+        {
+            return Team.GetTeams();
+        }
+
+        public void AddTeam(string name, string contact)
+        {
+            Team team= new Team() { name = name, contact = contact };
+            team.AddTeam();
+        }
+
+        public Master GetMasterData()
+        {
+            return Master.GetMasterData();
+        }
+
+        public void AddUser(string id, string loginname, string password, string fname, string lname, string contact, string dob, string profession, string cardno, string joiningtype, string joinedby, string team, string role, string workshop)
+        {
+            User user = new User()
+            {
+                id = id == "NULL" ? -1 : int.Parse(id),
+                userName = loginname == "NULL" ? "" : loginname,
+                password = password == "NULL" ? "" : password,
+                firstName = fname,
+                lastName = lname,
+                contact = contact,
+                dob = dob,
+                profession = profession,
+                admissionCardNo = cardno,
+                joiningType = int.Parse(joiningtype),
+                joinedBy = joinedby == "NULL" ? -1 : int.Parse(joinedby),
+                team = int.Parse(team),
+                roleId = int.Parse(role),
+                workshop = workshop
+            };
         }
     }
 }

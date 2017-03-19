@@ -73,6 +73,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\Master.cs" />
+    <Compile Include="BusinessObjects\Team.cs" />
     <Compile Include="BusinessObjects\Location.cs" />
     <Compile Include="BusinessObjects\User.cs" />
     <Compile Include="BusinessObjects\Workshop.cs" />

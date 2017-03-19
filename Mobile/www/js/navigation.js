@@ -2,7 +2,7 @@ $('.mdl-layout__drawer').append(
 '<span class="mdl-layout-title">' +
 '<img src="img/laps.png" style="width:100%;" />' +
 '</span>' +
-'<b><span id="LoginUser" style="padding: 10px 0px 0px 16px;"></span></b>' +
+'<b><span id="LoginUser" style="padding: 10px 0px 0px 16px;display:none;"></span></b>' +
 '<nav class="mdl-navigation">' +
 '<a class="mdl-navigation__link" href="about.html"><i class="material-icons">group</i><span id="NavigationAbout" class="content"></span></a>' +
 '<a class="mdl-navigation__link" href="program.html"><i class="material-icons">group_work</i><span id="NavigationPrograms" class="content"></span></a>' +
@@ -16,8 +16,10 @@ $('.mdl-layout__drawer').append(
 '<div id="divAdmin">' +
 '<p style="font-weight:bold; margin-left: 16px;">Admin</p>' +
 '<hr>' +
-'<a class="mdl-navigation__link" href="locationAdmin.html" id="locationAdmin"><i class="material-icons">edit_location</i><span>Location Admin</span></a>' +
+'<a class="mdl-navigation__link" href="userAdmin.html" id="userAdmin"><i class="material-icons">perm_identity</i><span>User Admin</span></a>' +
+'<a class="mdl-navigation__link" href="teamAdmin.html" id="teamAdmin"><i class="material-icons">people_outline</i><span>Team Admin</span></a>' +
 '<a class="mdl-navigation__link" href="workshopAdmin.html" id="workshopAdmin"><i class="material-icons">assignment</i><span>Workshop Admin</span></a>' +
+'<a class="mdl-navigation__link" href="locationAdmin.html" id="locationAdmin"><i class="material-icons">edit_location</i><span>Location Admin</span></a>' +
 '</div>' +
 '</nav>'
 );

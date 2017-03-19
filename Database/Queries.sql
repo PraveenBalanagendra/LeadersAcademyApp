@@ -15,14 +15,14 @@ ALTER TABLE WorkshopDates AUTO_INCREMENT = 1;
 delete from Workshop  where Id >= 1;
 ALTER TABLE Workshop AUTO_INCREMENT = 1;
 
-select SPLIT_STR('asd$ad','$',1);
+SELECT w.Id, l.Name, wd.Day
+      FROM Workshop w
+      JOIN Location l ON w.LocationId = l.Id
+      JOIN WorkshopDates wd ON wd.WorkshopId = w.Id
+      ORDER BY Day DESC;
+      
+SELECT * FROM Team;
 
-DROP FUNCTION SPLIT_STR;
-CREATE FUNCTION SPLIT_STR(
- input VARCHAR(255),
- delimit VARCHAR(12),
- pos INT
- )
-   RETURNS VARCHAR(255)
-   RETURN REPLACE(SUBSTRING(SUBSTRING_INDEX(input, delimit, pos),LENGTH(SUBSTRING_INDEX(input, delimit, pos -1)) + 1),delimit, '');
-   
+UPDATE Team SET Contact = '9632723025' WHERE Id>=1;
+
+select * from Role;

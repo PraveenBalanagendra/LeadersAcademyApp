@@ -35,7 +35,7 @@ namespace Services.BusinessObjects
             }
         }
 
-        public static List<Workshop> GetWorWorkshops()
+        public static List<Workshop> GetWorkshops()
         {
             DataSet workshops = new DAL().GetDataSet("GetWorkshop", null, "StoredProcedure");
 

@@ -29,5 +29,21 @@ namespace Services
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/workshop/list", ResponseFormat = WebMessageFormat.Json)]
         List<Workshop> GetWorkshop();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/team/list", ResponseFormat = WebMessageFormat.Json)]
+        List<Team> GetTeam();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/team/add/{name}/{contact}", ResponseFormat = WebMessageFormat.Json)]
+        void AddTeam(string name, string contact);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/masterdata", ResponseFormat = WebMessageFormat.Json)]
+        Master GetMasterData();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/user/add/{id}/{loginname}/{password}/{fname}/{lname}/{contact}/{dob}/{profession}/{cardno}/{joiningtype}/{joinedby}/{team}/{role}/{workshop}", ResponseFormat = WebMessageFormat.Json)]
+        void AddUser(string id, string loginname, string password, string fname, string lname, string contact, string dob, string profession, string cardno, string joiningtype, string joinedby, string team, string role, string workshop);
     }
 }

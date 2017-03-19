@@ -67,14 +67,18 @@ function populatePage()
 			if(len > 0)
 			{
 				$('#login').hide();
-				$('#divAdmin').show();
+				if(results.rows.item(0).role == "Admin")
+					$('#divAdmin').show();
+				else
+					$('#divAdmin').hide();
 				$('#logout').show();
-				$('#LoginUser').append(results.rows.item(0).firstName + ' ' + results.rows.item(0).lastName);
+				$('#LoginUser').append(results.rows.item(0).firstName + ' ' + results.rows.item(0).lastName).show();
 			}
 			else{
 				$('#logout').hide();
 				$('#login').show();
 				$('#divAdmin').hide();
+				$('#LoginUser').hide();
 			}
 		}, null);
 	});
