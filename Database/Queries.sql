@@ -26,3 +26,12 @@ SELECT * FROM Team;
 UPDATE Team SET Contact = '9632723025' WHERE Id>=1;
 
 select * from Role;
+
+select * from Users;
+
+update Users set RoleId = 5 where Id = 1;x
+
+update Users Set RoleId = 5 WHERE Id = 1;
+
+select * from JoiningType;
+
