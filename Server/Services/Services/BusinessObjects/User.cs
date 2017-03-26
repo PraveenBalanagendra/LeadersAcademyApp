@@ -17,10 +17,9 @@ namespace Services.BusinessObjects
         public string contact { get; set; }
         public string dob { get; set; }
         public string profession { get; set; }
-        public string admissionCardNo { get; set; }
-        public int joiningType { get; set; }
-        public int team { get; set; }
-        public string workshop { get; set; }
+        public int joiningTypeId { get; set; }
+        public int teamId { get; set; }
+        public string workshopDetails { get; set; }
         public int roleId { get; set; }
         public int joinedBy { get; set; }
 
@@ -43,24 +42,25 @@ namespace Services.BusinessObjects
             }
         }
 
-        public void AddUser()
+        public void AddModifyUser()
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("@UserId", this.id.ToString());
             parameters.Add("@UserName", this.userName);
             parameters.Add("@Password", this.password);
             parameters.Add("@FirstName", this.firstName);
             parameters.Add("@LastName", this.lastName);
+            parameters.Add("@RoleId", this.roleId.ToString());
             parameters.Add("@Contact", this.contact);
             parameters.Add("@DOB", this.dob);
             parameters.Add("@Profession", this.profession);
-            parameters.Add("@AdmissionCardNo", this.admissionCardNo);
-            parameters.Add("@JoiningType", this.joiningType.ToString());
+            parameters.Add("@TeamId", this.teamId.ToString());
+            parameters.Add("@JoiningType", this.joiningTypeId.ToString());
             parameters.Add("@JoinedBy", this.joinedBy.ToString());
-            parameters.Add("@TeamId", this.team.ToString());
-            parameters.Add("@RoleId", this.roleId.ToString());
-            parameters.Add("@WorkshopIds", this.workshop);
+            parameters.Add("@WorkshopDetails", this.workshopDetails);
+            //parameters.Add("@AdmissionCardNo", this.admissionCardNo);
 
-            DataSet ds = new DAL().GetDataSet("CreateUser", parameters, "StoredProcedure");
+            DataSet ds = new DAL().GetDataSet("AddModifyUser", parameters, "StoredProcedure");
         }
 
         public void UpdateUser()

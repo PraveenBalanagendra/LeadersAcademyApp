@@ -3,6 +3,10 @@ select * from Location;
 delete from Location where Id >3;
 ALTER TABLE Location  AUTO_INCREMENT = 1;
 
+delete from Users where Id = 1;
+ALTER TABLE Users AUTO_INCREMENT = 1;
+
+
 CALL CreateWorkshop(1,'2012.01.01 12:12:12','2012.01.01 12:12:12','2012.01.01 12:12:12','2012.01.01 12:12:12');
 
 select * from Workshop;
@@ -28,10 +32,8 @@ UPDATE Team SET Contact = '9632723025' WHERE Id>=1;
 select * from Role;
 
 select * from Users;
+select * from UserWorkshop;
 
-update Users set RoleId = 5 where Id = 1;x
+DELETE FROM UserWorkshop WHERE UserId = 3;
 
-update Users Set RoleId = 5 WHERE Id = 1;
-
-select * from JoiningType;
-
+update Users SET JoinedBy = 1 WHERE Id > 1;

@@ -127,14 +127,6 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
-							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-								<input class="mdl-textfield__input" type="text" id="txtAdmissionCardNo">
-								<label class="mdl-textfield__label" for="sample3">Admission Card No.<label>
-							</div>
-						</td>
-					</tr>
-					<tr>
 						<td class="mdl-data-table__cell--non-numeric" style="white-space:no-wrap;">
 							<div class="mdl-selectfield mdl-js-selectfield">
 								<select class="mdl-selectfield__select" id="ddlJoiningType" name="ddlJoiningType">
@@ -177,7 +169,7 @@
 					</tr>
 					<tr>
 						<td style="text-align:center;">
-							<button onclick="addUser()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="width:200px;">
+							<button onclick="addModifyUser()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="width:200px;">
 								<i class="material-icons">save</i>&nbsp;&nbsp;Save
 							</button>
 						</td>
@@ -187,8 +179,9 @@
         </div>
       </main>
     </div>
-	<div id="dialog" title="Workshop">
-		<table id="tblWorkshops">
+	<div id="dialog" title="Workshop" style="height: 80%;">
+		<table id="tblWorkshops" cellpadding=1 cellspacing=1>
+		<tr><td>Id</td><td>Location</td><td>Dates</td><td>Admission#</td></tr>
 		</table>
 	</div>
 </div>
@@ -230,7 +223,7 @@
 		});
 		
 		$.each(data.workshop, function (i, item) {
-			$('#tblWorkshops').append("<tr><td style='text-align:left;vertical-align:top;'>" + item.id + "</td><td style='text-align:left;vertical-align:top;'>" + item.locationName + "</td><td style='text-align:left;vertical-align:top;'>" + item.dateTimes + "</td><td><input type='checkbox' id='cb'" + i + " /></td></tr>");
+			$('#tblWorkshops').append("<tr><td id='id" + i + "' style='text-align:left;vertical-align:top;'>" + item.id + "</td><td style='text-align:left;vertical-align:top;'>" + item.locationName + "</td><td style='text-align:left;vertical-align:top;'>" + item.dateTimes + "</td><td style='vertical-align:top;'><input type='text' style='width:30px;' id='txt" + i + "' /></td></tr>");
 		});
 	};
 	
@@ -241,6 +234,48 @@
 	function addTeam(){
 		invokeService("/team/add/" + $("#txtTeamName").val() + "/" + $("#txtContact").val());
 		window.location = "teamAdmin.html";
+	}
+	
+	function addModifyUser(){
+		workshopDetails = "";
+		$('#tblWorkshops').find('input').each(function(i){
+			if($(this).val() != "")
+				workshopDetails += (workshopDetails == "") ? $(this).parent().parent().find("#id" + i).html() + "$" + $(this).val()
+														   : "-" + $(this).parent().parent().find("#id" + i).html() + "$" + $(this).val();
+		});
+	
+		successCallback = function (data) {	
+			alert("User record saved successfully");
+			$("#txtLoginName").val("") ;
+			$("#txtPassword").val("");
+			$("#txtFName").val(""); 
+			$("#txtLName").val("");
+			$("#ddlRole").val("");
+			$("#txtPhone").val("");
+			$("#txDOB").val("");
+			$("#txtProfession").val("");
+			$("#ddlTeam").val("");
+			$("#ddlJoiningType").val("");
+			$('#tblWorkshops').find('input').each(function(){
+				$(this).val("");
+			});
+		}
+		invokeService("/user/addmodify/" +
+					"-1" + "/" + 
+					$("#txtLoginName").val() + "/" + 
+					$("#txtPassword").val() + "/" + 
+					$("#txtFName").val() + "/" + 
+					$("#txtLName").val() + "/" + 
+					$("#ddlRole").val() + "/" + 
+					$("#txtPhone").val() + "/" + 
+					$("#txDOB").val() + "/" + 
+					$("#txtProfession").val() + "/" + 
+					$("#ddlTeam").val() + "/" + 
+					$("#ddlJoiningType").val() + "/" + 
+					"-1" + "/" + 
+					workshopDetails
+		);
+		//1/pbala/testpwd/Praveen/Balanagendra/5/9632723025/25-10-1981/Software/1/3/-1/1$354
 	}
 	
 	invokeService("/masterdata");

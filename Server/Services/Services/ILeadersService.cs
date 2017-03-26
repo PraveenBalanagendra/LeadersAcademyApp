@@ -43,7 +43,7 @@ namespace Services
         Master GetMasterData();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "/user/add/{id}/{loginname}/{password}/{fname}/{lname}/{contact}/{dob}/{profession}/{cardno}/{joiningtype}/{joinedby}/{team}/{role}/{workshop}", ResponseFormat = WebMessageFormat.Json)]
-        void AddUser(string id, string loginname, string password, string fname, string lname, string contact, string dob, string profession, string cardno, string joiningtype, string joinedby, string team, string role, string workshop);
+        [WebInvoke(Method = "GET", UriTemplate = "/user/addmodify/{id}/{loginname}/{password}/{fname}/{lname}/{role}/{contact}/{dob}/{profession}/{team}/{joiningtype}/{joinedby}/{workshopDetails}", ResponseFormat = WebMessageFormat.Json)]
+        void AddModifyUser(string id, string loginname, string password, string fname, string lname, string role, string contact, string dob, string profession, string team, string joiningtype, string joinedby, string workshopDetails);
     }
 }

@@ -57,7 +57,7 @@ namespace Services
             return Master.GetMasterData();
         }
 
-        public void AddUser(string id, string loginname, string password, string fname, string lname, string contact, string dob, string profession, string cardno, string joiningtype, string joinedby, string team, string role, string workshop)
+        public void AddModifyUser(string id, string loginname, string password, string fname, string lname, string role, string contact, string dob, string profession, string team, string joiningtype, string joinedby, string workshopDetails)
         {
             User user = new User()
             {
@@ -69,13 +69,14 @@ namespace Services
                 contact = contact,
                 dob = dob,
                 profession = profession,
-                admissionCardNo = cardno,
-                joiningType = int.Parse(joiningtype),
+                joiningTypeId = int.Parse(joiningtype),
                 joinedBy = joinedby == "NULL" ? -1 : int.Parse(joinedby),
-                team = int.Parse(team),
+                teamId = int.Parse(team),
                 roleId = int.Parse(role),
-                workshop = workshop
+                workshopDetails = workshopDetails
             };
+
+            user.AddModifyUser();
         }
     }
 }
