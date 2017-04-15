@@ -10,13 +10,13 @@
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.phonegap.LocalStorage"
         },
-        "cordova-sqlite-storage": {
+        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.phonegap.LocalStorage"
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.phonegap.LocalStorage"
         },
-        "cordova-plugin-statusbar": {
+        "cordova-sqlite-storage": {
             "PACKAGE_NAME": "com.phonegap.LocalStorage"
         }
     },

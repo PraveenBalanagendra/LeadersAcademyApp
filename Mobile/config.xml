@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.LocalStorage" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.leadaersacademy.mobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Leaders</name>
     <description>
         360 Degree Transformational Programs
     </description>
-    <author email="praveen.balanagendra@gmail.com" href="http://ladersmagic.in">
+    <author email="leadersacademy.app@gmail.com" href="www.leadersmagic.in">
         Leaders Academy
     </author>
     <content src="about.html" />
@@ -38,12 +38,12 @@
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" /> -->
     <platform name="android">
-        <icon density="ldpi" src="www/res/icon/android/screen.png" />
-        <icon density="mdpi" src="www/res/icon/android/screen.png" />
-        <icon density="hdpi" src="www/res/icon/android/screen.png" />
-        <icon density="xhdpi" src="www/res/icon/android/screen.png" />
-        <icon density="xxhdpi" src="www/res/icon/android/screen.png" />
-        <icon density="xxxhdpi" src="www/res/icon/android/screen.png" />
+        <icon density="ldpi" src="www/res/icon/android/leaders.png" />
+        <icon density="mdpi" src="www/res/icon/android/leaders.png" />
+        <icon density="hdpi" src="www/res/icon/android/leaders.png" />
+        <icon density="xhdpi" src="www/res/icon/android/leaders.png" />
+        <icon density="xxhdpi" src="www/res/icon/android/leaders.png" />
+        <icon density="xxxhdpi" src="www/res/icon/android/leaders.png" />
         <splash density="land-ldpi" src="www/res/screen/android/drawable-land-ldpi-screen.png" />
         <splash density="land-mdpi" src="www/res/screen/android/drawable-land-mdpi-screen.png" />
         <splash density="land-hdpi" src="www/res/screen/android/drawable-land-hdpi-screen.png" />
