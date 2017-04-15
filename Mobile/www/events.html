@@ -43,8 +43,8 @@
       </div>
       <main class="mdl-layout__content">
         <div class="page-content">
-            <div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">
-                <div class="mdl-card__title" style="background-color:#9a9695;">
+<!--             <div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">
+                <div class="mdl-card__title" style="background-color:#f9d14c;">
                     <h1 class="mdl-card__title-text">Workshop</h1> <br />
                     <span class="mdl-card__subtitle-text">March 18 2017</span>
                 </div>
@@ -55,13 +55,13 @@
                 Dates: March 18 2017, March 18 2017, March 18 2017, March 18 2017 <br />
                 Language: Kananda
                 </div>
-				<div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(230, 226, 225);">
+				<div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(233, 247, 146);">
                     <i class="material-icons">location_on</i><span class="mdl-card__subtitle-text">Location</span>
                     <i class="material-icons">web</i><span class="mdl-card__subtitle-text">Online Payment</span>
                 </div>
             </div>
 			<div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">
-                <div class="mdl-card__title" style="background-color:#9a9695;">
+                <div class="mdl-card__title" style="background-color:#f9d14c;">
                     <h1 class="mdl-card__title-text">Kurukshetra</h1> <br />
                     <span class="mdl-card__subtitle-text">March 18 2017</span>
                 </div>
@@ -72,13 +72,13 @@
                 Dates: March 18 2017, March 18 2017, March 18 2017, March 18 2017 <br />
                 Language: Kananda
                 </div>
-				<div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(230, 226, 225);">
+				<div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(233, 247, 146);">
                     <i class="material-icons">location_on</i><span class="mdl-card__subtitle-text">Location</span>
                     <i class="material-icons">web</i><span class="mdl-card__subtitle-text">Online Payment</span>
                 </div>
             </div>
 			<div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">
-                <div class="mdl-card__title" style="background-color:#9a9695;">
+                <div class="mdl-card__title" style="background-color:#f9d14c;">
                     <h1 class="mdl-card__title-text">Nirvana</h1> <br />
                     <span class="mdl-card__subtitle-text">March 18 2017</span>
                 </div>
@@ -89,17 +89,17 @@
                 Dates: March 18 2017, March 18 2017, March 18 2017, March 18 2017 <br />
                 Language: Kananda
                 </div>
-				<div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(230, 226, 225);">
+				<div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(233, 247, 146);">
                     <i class="material-icons">location_on</i><span class="mdl-card__subtitle-text">Location</span>
                     <i class="material-icons">web</i><span class="mdl-card__subtitle-text">Online Payment</span>
                 </div>
             </div>
-            <!--<div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">
+ -->            <!--<div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">
                 <div class="mdl-card__title" style="background-color:#f44336;">
                     <h1 class="mdl-card__title-text">Nirvana</h1> <br />
                     <span class="mdl-card__subtitle-text">March 18 2017</span>
                 </div>
-                <div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(230, 226, 225);">
+                <div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(233, 247, 146);">
                     <i class="material-icons">location_on</i><span class="mdl-card__subtitle-text">Location</span>
                     <i class="material-icons">web</i><span class="mdl-card__subtitle-text">Online Payment</span>
                 </div>
@@ -116,7 +116,7 @@
                     <h1 class="mdl-card__title-text">Kurukshetra</h1> <br />
                     <span class="mdl-card__subtitle-text">March 18 2017</span>
                 </div>
-                <div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(230, 226, 225);">
+                <div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(233, 247, 146);">
                     <i class="material-icons">location_on</i><span class="mdl-card__subtitle-text">Location</span>
                     <i class="material-icons">web</i><span class="mdl-card__subtitle-text">Online Payment</span>
                 </div>
@@ -134,6 +134,45 @@
 </div>
 	<script type="text/javascript" src="js/db.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/service.js"></script>
+	
+	<script>
+	var successCallback = function(data){
+		$.each(data, function (i, item) {
+			$('.page-content').append(
+				'<div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">' +
+					'<div class="mdl-card__title" style="background-color:#f9d14c;">' +
+						'<h1 class="mdl-card__title-text">' + item.eventType + '</h1> <br />' +
+						'<span class="mdl-card__subtitle-text">' + item.dates.split(',')[0] + '</span>' +
+					'</div>' +
+					'<div class="mdl-card__supporting-text">' +
+						((item.eventType == "Workshop") ? 
+								item.dates.split(',').length + " days transformational program." : 
+								(item.EventType == "Kurukshetra" ? 
+									"One day program with clarity on What you feed is What you become." : 
+									item.dates.split(',').length + " days spiritual program."
+								))
+					+ '</div>' +
+					'<div class="mdl-card__supporting-text">' +
+					'<b>Dates: </b>' + item.dates + ' <br />' +
+					'<b>Location: </b>' + item.locationName + ' <br />' +
+					'<b>Address: </b>' + item.locationAddress + 
+					'</div>' +
+					'<div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(233, 247, 146);">' +
+						'<a class="mdl-navigation__link" href="geo:' + item.locationCoordinates + '?q=' + item.locationCoordinates + '(' + item.locationName + ')"><i class="material-icons">location_on</i>' + item.locationName + '</a></td>' +
+						'</span>' +
+					'</div>' +
+				'</div>'
+			)}
+		);
+	};
+
+	var errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
+		alert('Whooops .. something not correct !!!');
+	}
+	
+	invokeService("/event/list");
+	</script>
 </body>
 
 </html>

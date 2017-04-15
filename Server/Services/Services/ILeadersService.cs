@@ -45,5 +45,9 @@ namespace Services
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/user/addmodify/{id}/{loginname}/{password}/{fname}/{lname}/{role}/{contact}/{dob}/{profession}/{team}/{joiningtype}/{joinedby}/{workshopDetails}", ResponseFormat = WebMessageFormat.Json)]
         void AddModifyUser(string id, string loginname, string password, string fname, string lname, string role, string contact, string dob, string profession, string team, string joiningtype, string joinedby, string workshopDetails);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/event/list", ResponseFormat = WebMessageFormat.Json)]
+        List<Events> GetEvents();
     }
 }

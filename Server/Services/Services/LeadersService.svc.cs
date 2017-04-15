@@ -78,5 +78,10 @@ namespace Services
 
             user.AddModifyUser();
         }
+
+        public List<Events> GetEvents()
+        {
+            return Events.GetEvents();
+        }
     }
 }
