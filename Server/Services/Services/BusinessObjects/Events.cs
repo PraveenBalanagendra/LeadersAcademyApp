@@ -29,7 +29,7 @@ namespace Services.BusinessObjects
                 {
                     item.dates = (item.dates == "") ?
                                     DateTime.Parse(dates["Day"].ToString()).ToString("dd MMM yyyy") :
-                                    DateTime.Parse(dates["Day"].ToString()).ToString("dd MMM yyyy") + ", " + item.dates;
+                                    item.dates + ", " + DateTime.Parse(dates["Day"].ToString()).ToString("dd MMM yyyy");
                 }
                 eventsData.Add(item);
             }

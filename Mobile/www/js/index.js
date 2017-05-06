@@ -1,31 +1,8 @@
-$(document).ready(function(){
-	// Fab Icons
-	/*var links = [
-		{
-			"bgcolor":"#03A9F4",
-			"icon":"<i class='material-icons'>perm_phone_msg</i>"
-		},
-		{
-			"url":"#",
-			"bgcolor":"orange",
-			"color":"#fffff",
-			"icon":"<i class='material-icons'>location_on</i>"
-		},
-		{
-			"url":"#",
-			"bgcolor":"#3B5998",
-			"color":"#fffff",
-			"icon":"<i class='material-icons'>email</i>"
-		},
-		{
-			"url":"#",
-			"bgcolor":"#263238",
-			"color":"white",
-			"icon":"<i class='material-icons'>phone</i>"
-		}
-	]
-	$('.kc_fab_wrapper').kc_fab(links);*/
+var imported = document.createElement('script');
+imported.src = 'js/service.js';
+document.head.appendChild(imported);
 
+$(document).ready(function(){
 	document.addEventListener("deviceready",onDeviceReady,false);
 });
 
@@ -43,6 +20,101 @@ function onDeviceReady(){
 		createDatabase();
 	else 
 		populatePage();
+	
+	myDB.transaction(function(transaction) {
+		transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['notificationSetting'], 
+		function (tx, results) {
+			if(results.rows.item(0).value == "yes")
+				setTimeout(checkNotification, 1000);
+		}, null);
+	});
+}
+
+function checkNotification(){
+	//alert('inside checkNotification');
+	cordova.plugins.notification.local.getTriggered(function (notifications) {
+		myDB.transaction(function(transaction) {
+		transaction.executeSql("SELECT value FROM setting WHERE description = 'notificationLastPull'", [], 
+			function (tx, results) {
+				//alert('query for notificationLastPull executed');
+				var len = results.rows.length, i;
+				//alert(len);
+				var lastTrigger = '';
+				var lastTriggerId = '0';
+				var pullNotitications = true;
+				if(len > 0){
+					lastTrigger = results.rows.item(0).value.split('^')[0];
+					lastTriggerId = results.rows.item(0).value.split('^')[1];
+					if((Math.abs(Date.now() - lastTrigger) /1000/60) < 1){
+						pullNotitications = false;
+					}
+				}
+				//alert(pullNotitications);
+				if(pullNotitications){
+					successCallback = function (data) {
+						//alert('successCallback');
+						var noOfNotifications = data.length;
+						//alert(noOfNotifications);
+						var maxId = 0;
+						$.each(data, function (i, item) {
+							//alert('scheduling item:' + item.id);
+							
+							myDB.transaction(function(transaction) {
+									transaction.executeSql("INSERT INTO notification(id, title, message) VALUES(?,?,?)", [item.id, item.title, item.message], null,null);
+								});
+							
+							cordova.plugins.notification.local.schedule({
+								id: item.id,
+								title: item.title,
+								text: item.message
+							});
+							maxId = item.id;
+						});
+						
+						if(len > 0){
+							if(maxId > 0)
+								myDB.transaction(function(transaction) {
+									transaction.executeSql("UPDATE setting SET value = ? WHERE description = ?", [Date.now() + "^" + maxId, 'notificationLastPull'], null,null);
+								});
+						}
+						else{
+							myDB.transaction(function(transaction) {
+								transaction.executeSql("INSERT INTO setting (description, value) VALUES(?,?)", ['notificationLastPull', Date.now() + "^" + maxId], 
+									null,null);
+							});
+						}
+					};
+					//alert(successCallback);
+					errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
+						//alert('Whooops .. something not correct in notification!!!');
+					};
+					//alert(errorCallback);
+					//alert('Invoking Service with lastTriggerId: ' + lastTriggerId);
+					invokeService("/notification/list/1/" + lastTriggerId);
+					//alert(invokeService);
+				}
+			}, null);
+		});
+		// if(notifications.length == 0){
+			// cordova.plugins.notification.local.schedule({
+				// id: 1,
+				// title: "Leaders Academy - Notification",
+				// text: "Upcoming workshop"
+			// });
+			// cordova.plugins.notification.local.schedule({
+				// id: 2,
+				// title: "Leaders Academy - Notification",
+				// text: "Upcoming workshop"
+			// });
+
+		//}
+	});
+	
+	cordova.plugins.notification.local.on("click", function (notification) {
+		window.location = "notification.html";
+	});
+	
+	setTimeout(checkNotification, 1000 * 60);
 }
 
 function BackKeyDown()

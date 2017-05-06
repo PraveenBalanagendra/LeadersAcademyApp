@@ -73,11 +73,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\Notification.cs" />
     <Compile Include="BusinessObjects\Events.cs" />
     <Compile Include="BusinessObjects\Master.cs" />
     <Compile Include="BusinessObjects\Team.cs" />
     <Compile Include="BusinessObjects\Location.cs" />
     <Compile Include="BusinessObjects\User.cs" />
+    <Compile Include="BusinessObjects\Nirvana.cs" />
     <Compile Include="BusinessObjects\Workshop.cs" />
     <Compile Include="DataAccess\DAL.cs" />
     <Compile Include="ILeadersService.cs" />

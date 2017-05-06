@@ -142,25 +142,31 @@
 			$('.page-content').append(
 				'<div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">' +
 					'<div class="mdl-card__title" style="background-color:#f9d14c;">' +
-						'<h1 class="mdl-card__title-text">' + item.eventType + '</h1> <br />' +
-						'<span class="mdl-card__subtitle-text">' + item.dates.split(',')[0] + '</span>' +
+						'<h1 class="mdl-card__title-text" style="font-weight:bold;">' + item.eventType + '</h1> <br />' +
+						'<span class="mdl-card__subtitle-text" style="font-weight:bold;">' + item.dates.split(',')[0] + '</span>' +
 					'</div>' +
 					'<div class="mdl-card__supporting-text">' +
 						((item.eventType == "Workshop") ? 
-								item.dates.split(',').length + " days transformational program." : 
-								(item.EventType == "Kurukshetra" ? 
-									"One day program with clarity on What you feed is What you become." : 
-									item.dates.split(',').length + " days spiritual program."
-								))
+							(item.dates.split(',').length + " days transformational program.") : 
+							(item.eventType == "Kurukshetra" ? 
+								"One day program with clarity on What you feed is What you become." : 
+								(item.eventType == "Nirvana" ? 
+									(item.dates.split(',').length + " days spiritual program.") :
+									"Whoops !!! Unknown Event"
+								)
+							)
+						)
 					+ '</div>' +
 					'<div class="mdl-card__supporting-text">' +
 					'<b>Dates: </b>' + item.dates + ' <br />' +
 					'<b>Location: </b>' + item.locationName + ' <br />' +
 					'<b>Address: </b>' + item.locationAddress + 
 					'</div>' +
-					'<div width="173" height="157" class="mdl-card__media" style="padding:10px;background-color:rgb(233, 247, 146);">' +
-						'<a class="mdl-navigation__link" href="geo:' + item.locationCoordinates + '?q=' + item.locationCoordinates + '(' + item.locationName + ')"><i class="material-icons">location_on</i>' + item.locationName + '</a></td>' +
-						'</span>' +
+					'<div width="173" height="200" class="mdl-card__media" style="padding:10px;background-color:rgb(233, 247, 146);">' +
+						((item.locationAddress == "") ? '' :
+							('<a class="mdl-navigation__link" href="geo:' + item.locationCoordinates + '?q=' + item.locationCoordinates + '(' + item.locationName + ')"><i class="material-icons">location_on</i>Location</a>&nbsp;')
+						) +
+					'<a class="mdl-navigation__link" href="javascript:alert();"><i class="material-icons">event_note</i>Register</a>' +
 					'</div>' +
 				'</div>'
 			)}

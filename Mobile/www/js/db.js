@@ -22,6 +22,10 @@ function createDatabase()
 	});
 
 	myDB.transaction(function(transaction) {
+		transaction.executeSql('CREATE TABLE IF NOT EXISTS notification (id, title, message)', [], null, null);
+	});
+
+	myDB.transaction(function(transaction) {
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['About' + 'AcademyHeader','Leaders Academy','ಲಿೀಡರ್ ಅಕಾಡೆಮಿ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['About' + 'BalaSirHeader','Balakrishnan V','ಬಾಲಕೃಷ್ಣ ವಿ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['About' + 'Academy','We began our journey on 18th DEC 2003 to make a difference to the people who wants to reach their pinnacle of their potential by giving confidence to their heart and clarity to their mind. Holistic development on the aspects of life (Personal, Family, Social, Intellectual, Financial, Spiritual) happily, peacefully, legally, ethically and healthily. Leaders Academy programs are specially designed for life long results. It is an inspirational, interactive, experiential life transforming development program to explore the real YOU in you','ನಾವು ಅವರ ಮನಸ್ಸಿಗೆ ತಮ್ಮ ಹೃದಯ ಮತ್ತು ಸ್ಪಷ್ಟತೆ ವಿಶ್ವಾಸ ನೀಡುವ ಮೂಲಕ ತಮ್ಮ ಸಾಮರ್ಥ್ಯವನ್ನು ತಮ್ಮ ಪರಾಕಾಷ್ಠೆಯನ್ನು ತಲುಪಲು ಬಯಸಿದೆ ಜನರಿಗೆ ಒಂದು ವ್ಯತ್ಯಾಸ ಮಾಡಲು 18 ಡಿಸೆಂಬರ್ 2003 ರಂದು ನಮ್ಮ ಪ್ರಯಾಣ ಆರಂಭಿಸಿತು. ಜೀವನದ ಅಂಶಗಳನ್ನು ಸಮಗ್ರ ಅಭಿವೃದ್ಧಿ (ವೈಯಕ್ತಿಕ, ಕೌಟುಂಬಿಕ, ಸಾಮಾಜಿಕ, ಬೌದ್ಧಿಕ, ಹಣಕಾಸು, ಆಧ್ಯಾತ್ಮಿಕ) ನೆಮ್ಮದಿಯಿಂದ, ಶಾಂತಿಯುತವಾಗಿ, ಕಾನೂನುಬದ್ಧವಾಗಿ, ನೈತಿಕವಾಗಿ ಮತ್ತು ಆರೋಗ್ಯಕರ. ನಾಯಕರು ಅಕಾಡೆಮಿ ಕಾರ್ಯಕ್ರಮಗಳು ಜೀವನದ ದೀರ್ಘ ಫಲಿತಾಂಶಗಳು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ಇದು ಒಂದು ಸ್ಪೂರ್ತಿದಾಯಕ, ಪರಸ್ಪರ, ಅನುಭವದ ಜೀವನದಲ್ಲಿ ನೀವು ನೈಜ ನೀವು ಅನ್ವೇಷಿಸಲು ಅಭಿವೃದ್ಧಿ ಕಾರ್ಯಕ್ರಮದ ಪರಿವರ್ತಿಸುವ ಇದೆ'], null, null);
@@ -52,13 +56,18 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['FAQ' + '2','30,000+ participants and growing','ಭಾಗವಹಿಸಿದವರ 30,000 ಮತ್ತು ಬೆಳೆಯುತ್ತಿರುವ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['FAQ' + '3','At the end of the programme, if you still don’t like the programme, the amount is completely refunded with no questions asked.','ಕಾರ್ಯಕ್ರಮದ ಕೊನೆಯಲ್ಲಿ, ನಿಮಗೆ ಇನ್ನೂ ಪ್ರೋಗ್ರಾಂ ಇಷ್ಟವಾಗದಿದ್ದರೆ, ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಲ್ಲದೆ ಸಂಪೂರ್ಣವಾಗಿ ಹಣ ಮರು ಆಗಲಿದೆ '], null, null);
 
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Settings' + 'Notification','Enable/Disable', 'ಸಕ್ರಿಯಗೊಳಿಸಿ / ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ'], null, null);
+		
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'KHeader','Kurukshetra','ಕುರುಕ್ಷೇತ್ರ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'KContent','Kurukshetra Series talks about the topic and provides an in depth knowledge and clarity. The topics ranges from Family, Self Confidence, Entertainment to Enlightenment, Parenting etc. ','ಕುರುಕ್ಷೇತ್ರದ ಬಗ್ಗೆ ವಿವರಣೆ ಬರೆಯಬೇಕು'], null, null);
-		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'KLink','K11 – Self Confidence','ಕೆ11 - ಆತ್ಮವಿಶ್ವಾಸ'], null, null);
-		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechHeader','Speech Contest','ಸ್ಪೀಚ್ ಕಾಂಟೆಸ್ಟ'], null, null);
-		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechContent','Speech Contest allows the member of Leaders Academy to contest for the best speech of the year.','ಸ್ಪೀಚ್ ಕಾಂಟೆಸ್ಟ ಬಗ್ಗೆ ವಿವರಣೆ ಬರೆಯಬೇಕು'], null, null);
-		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechLink1','Best Top 20 Speech – 2015','Best Top 20 Speech – 2015'], null, null);
-		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechLink2','Best Top 20 Speech – 2016','Best Top 20 Speech – 2016'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'KLink','Tap here for K11 – Self Confidence','ಕೆ11 - ಆತ್ಮವಿಶ್ವಾಸಕ್ಕಾಗಿ ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechHeader','Speech Contest','ಸ್ಪೀಚ್ ಕಾಂಟೆಸ್ಟಗಾಗಿಇಲ್ಲಿ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechContent','Speech Contest allows the member of Leaders Academy to contest for the best speech of the year.','ಸ್ಪೀಚ್ ಸ್ಪರ್ಧೆಯು ನಾಯಕರ ಅಕಾಡೆಮಿಯ ಸದಸ್ಯರು ವರ್ಷದ ಅತ್ಯುತ್ತಮ ಭಾಷಣಕ್ಕಾಗಿ ಸ್ಪರ್ಧಿಸಲು ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ.'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechLink1','Tap here for Best Top 20 Speech – 2015','ಅತ್ಯುತ್ತಮ ಟಾಪ್ 20 ಸ್ಪೀಚ್ಗಾಗಿ ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ - 2015'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechLink2','Tap here for Best Top 20 Speech – 2016','ಅತ್ಯುತ್ತಮ ಟಾಪ್ 20 ಸ್ಪೀಚ್ಗಾಗಿ ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ - 2016'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'HealthHeader','Health','ಆರೋಗ್ಯ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'HealthContent','My health my responsibility','ನನ್ನ ಆರೋಗ್ಯ ನನ್ನ ಜವಾಬ್ದಾರಿ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'HealthLink','Tap here for Episodes','ಎಪಿಸೋಡ್ಗಳಿಗಾಗಿ ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ'], null, null);
     });
 	
 	// Create Navigation Contents
@@ -72,6 +81,7 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Login','Login','ಲಾಗಿನ್'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Logout','Logout','ಲಾಗೌಟ್'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Gallery','Gallery','ಗ್ಯಾಲರಿ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Notification','Notification','ಪ್ರಕಟಣೆ'], null, null);
 	});
 	
 	myDB.transaction(function(transaction) {
@@ -79,6 +89,7 @@ function createDatabase()
 			// Cache screen elements
 			getLanguage();
 		}, null);
+		transaction.executeSql('INSERT INTO setting (description, value) VALUES (?,?)', ['notificationSetting', 'yes'], null, null);
 	});
 	
 	// myDB.transaction(function(transaction) {

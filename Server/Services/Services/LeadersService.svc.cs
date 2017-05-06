@@ -41,6 +41,17 @@ namespace Services
             return Workshop.GetWorkshops();
         }
 
+        public void AddNirvana(string dateTimes)
+        {
+            Nirvana nirvana = new Nirvana() { dateTimes = dateTimes };
+            nirvana.AddNirvana();
+        }
+
+        public List<Nirvana> GetNirvana()
+        {
+            return Nirvana.GetNirvanas();
+        }
+
         public List<Team> GetTeam()
         {
             return Team.GetTeams();
@@ -82,6 +93,11 @@ namespace Services
         public List<Events> GetEvents()
         {
             return Events.GetEvents();
+        }
+
+        public List<Notification> GetNotifications(string userId, string notificationId)
+        {
+            return Notification.GetNotifications(userId, notificationId);
         }
     }
 }

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+    <link rel="stylesheet" href="css/material.css">
+    <link rel="stylesheet" href="css/material_Icons.css">    
+    <link rel="stylesheet" href="css/kc.fab.css">
+	<link rel='stylesheet prefetch' href='css/mdl-selectfield.min.css'>
+    <script src="js/material.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/kc.fab.min.js"></script>
+    <title>Notification</title>
+</head>
+
+<body>
+<div class="showOnLoad" style="width:100%;">
+    <script type="text/javascript" src="cordova.js"></script>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Notification</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="kc_fab_wrapper"></div>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+		<script type="text/javascript" src="js/navigation.js"></script>
+      </div>
+	  <main class="mdl-layout__content">
+		<div class="page-content">
+			<table class="mdl-data-table" style="white-space:wrap;width:100%;">
+				<tbody>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="txtTitle">
+								<label class="mdl-textfield__label" for="sample3">Title<label>
+							</div>
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<textarea class="mdl-textfield__input" type="text" rows= "3" id="txtMessage" ></textarea>
+								<label class="mdl-textfield__label" for="sample3">Message<label>
+							</div>
+							<div class="mdl-selectfield mdl-js-selectfield" style="width:100%;">
+								<select class="mdl-selectfield__select" id="ddlType" name="ddlType">
+								  <option value="" selected></option>
+								  <option value="Notification">Notification</option>
+								  <option value="SMS">SMS</option>
+								</select>
+								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
+								<label class="mdl-selectfield__label" for="ddlType">Type</label>
+							</div>
+							<div class="mdl-selectfield mdl-js-selectfield" style="width:100%;">
+								<select class="mdl-selectfield__select" id="ddlTo" name="ddlTo">
+								  <option value="" selected></option>
+								  <option value="Everyone">Everyone</option>
+								  <option value="Group">Group</option>
+								</select>
+								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
+								<label class="mdl-selectfield__label" for="ddlTo">To</label>
+							</div>
+							<div class="mdl-selectfield mdl-js-selectfield" style="width:100%;">
+								<select class="mdl-selectfield__select" id="ddlEventType" name="ddlEventType">
+								  <option value="" selected></option>
+								  <option value="Workshop">Workshop</option>
+								  <option value="Nirvana">Nirvana</option>
+								</select>
+								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
+								<label class="mdl-selectfield__label" for="ddlEventType">Event Type</label>
+							</div>
+							<div class="mdl-selectfield mdl-js-selectfield" style="width:100%;">
+								<select class="mdl-selectfield__select" id="ddlBatch" name="ddlBatch">
+								  <option value="" selected></option>
+								  <option value="All">All</option>
+								</select>
+								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
+								<label class="mdl-selectfield__label" for="ddlBatch">Batch</label>
+							</div>
+							<div class="mdl-selectfield mdl-js-selectfield" style="width:100%;">
+								<select class="mdl-selectfield__select" id="ddlRole" name="ddlRole">
+								</select>
+								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
+								<label class="mdl-selectfield__label" for="ddlRole">Role</label>
+							</div>
+							<div style="text-align:center;">
+								<button onclick="addLocation()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="width:200px;">
+								<i class="material-icons">input</i>&nbsp;&nbsp;Add Notification
+							</button>
+
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+      </main>
+    </div>
+</div>
+	<script type="text/javascript" src="js/db.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/mdl-selectfield.min.js"></script>
+	<script>
+	function addDate(){
+		var len = (($("#divDateTime").children().length)/3) + 1;
+		$("#divDateTime").append(
+			'<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:30%">'+
+				'<input class="mdl-textfield__input" type="text" id="txtDate' + len + '">' +
+			'</div>'+
+			'<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:30%">'+
+				'<input class="mdl-textfield__input" type="text" id="txtStartTime' + len + '">' +
+			'</div>'+
+			'<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:30%">'+
+				'<input class="mdl-textfield__input" type="text" id="txtEndTime' + len + '">' +
+			'</div>'
+		);
+	}
+	
+	var successCallback = function (data) {
+		var noOfLocations = data.length;
+		
+		$.each(data, function (i, item) {
+			$('#ddllocation').append($('<option>', { 
+				value: item.id,
+				text : item.name 
+			}));
+		});
+		
+		successCallback = function(data){
+			$.each(data, function (i, item) {
+				$('#tblWorkshop').append(
+					"<tr><td style='text-align:left;vertical-align:top;'>" + item.id + "</td><td style='text-align:left;vertical-align:top;'>" + item.locationName + "</td><td style='text-align:left;vertical-align:top;'>" + item.dateTimes + "</td></tr>"
+				)}
+			);
+		};
+		
+		invokeService("/workshop/list");
+	};
+	
+	var errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
+		alert('Whooops .. something not correct !!!');
+	}
+	
+	function addWorkshop(){
+		var dt = "";
+		
+		var noOfItems = ($("#divDateTime").children().length)/3;
+		
+		for(i=1; i<=noOfItems; i++){
+			dt += (dt == "") ? $("#txtDate" + i).val() + "^" + $("#txtStartTime" + i).val() + "^" + $("#txtEndTime" + i).val() 
+			: "$" + $("#txtDate" + i).val() + "^" + $("#txtStartTime" + i).val() + "^" + $("#txtEndTime" + i).val();
+		}
+		invokeService("/workshop/add/" + $( "#ddllocation").val() + "/" + dt);
+		window.location = "workshopAdmin.html";
+	}
+	
+	//invokeService("/location/list");
+	</script>
+</body>
+</html>

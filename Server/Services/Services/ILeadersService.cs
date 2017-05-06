@@ -31,6 +31,14 @@ namespace Services
         List<Workshop> GetWorkshop();
 
         [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/nirvana/add/{dateTimes}", ResponseFormat = WebMessageFormat.Json)]
+        void AddNirvana(string dateTimes);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/nirvana/list", ResponseFormat = WebMessageFormat.Json)]
+        List<Nirvana> GetNirvana();
+
+        [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/team/list", ResponseFormat = WebMessageFormat.Json)]
         List<Team> GetTeam();
 
@@ -49,5 +57,9 @@ namespace Services
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/event/list", ResponseFormat = WebMessageFormat.Json)]
         List<Events> GetEvents();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/notification/list/{userId}/{notificationId}", ResponseFormat = WebMessageFormat.Json)]
+        List<Notification> GetNotifications(string userId, string notificationId);
     }
 }

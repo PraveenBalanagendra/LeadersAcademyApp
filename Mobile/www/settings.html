@@ -82,6 +82,22 @@
                 </tr>
               </tbody>
             </table>
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table" style="width: 100%">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric" colspan="2">Notification</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mdl-data-table__cell--non-numeric content" id="SettingsNotification"></td>
+                  <td>
+					  <input type="checkbox" id="chkNotification" class="mdl-switch__input">
+					</label>
+				  </td>
+                </tr>
+              </tbody>
+            </table>
 <!--            <br />
             <table class="mdl-data-table mdl-js-data-table mdl-data-table" style="width: 100%">
               <thead>
@@ -106,15 +122,31 @@
       </main>
     </div>
 </div>
+	<script>
+	var successCallback;
+	var errorCallback;
+	</script>
 	<script type="text/javascript" src="js/db.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript">
 	function fnUpdateSettings(){
 		localStorage.clear();
 		myDB.transaction(function(transaction) {
-			transaction.executeSql("UPDATE setting set value = ?", [$("input:radio[name=language]:checked").val()], function(txt, message){getLanguage(); window.location = "settings.html";}, null);
+			transaction.executeSql("UPDATE setting set value = ? WHERE description = ?", [$("input:radio[name=language]:checked").val(), 'language'], function(txt, message){getLanguage(); window.location = "settings.html";}, null);
+			transaction.executeSql("UPDATE setting set value = ? WHERE description = ?", [($("#chkNotification").is(':checked'))?'yes':'no', 'notificationSetting'], function(txt, message){getLanguage(); window.location = "settings.html";}, null);
 		});
 	}
+	
+	setTimeout(function(){
+		myDB.transaction(function(transaction) {
+			transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['notificationSetting'], 
+				function (tx, results) {
+					$('#chkNotification').prop('checked', results.rows.item(0).value == "yes" ? true : false);
+				}, null
+			);
+		});
+	}, 500);
+	
 	</script>
 </body>
 
