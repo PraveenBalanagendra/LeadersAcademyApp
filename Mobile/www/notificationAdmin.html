@@ -91,39 +91,17 @@
 								<select class="mdl-selectfield__select" id="ddlTo" name="ddlTo">
 								  <option value="" selected></option>
 								  <option value="Everyone">Everyone</option>
-								  <option value="Group">Group</option>
+								  <option value="CTM">CTM</option>
+								  <option value="Participant">Participant</option>
+								  <option value="GLT">GLT</option>
 								</select>
 								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
 								<label class="mdl-selectfield__label" for="ddlTo">To</label>
 							</div>
-							<div class="mdl-selectfield mdl-js-selectfield" style="width:100%;">
-								<select class="mdl-selectfield__select" id="ddlEventType" name="ddlEventType">
-								  <option value="" selected></option>
-								  <option value="Workshop">Workshop</option>
-								  <option value="Nirvana">Nirvana</option>
-								</select>
-								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
-								<label class="mdl-selectfield__label" for="ddlEventType">Event Type</label>
-							</div>
-							<div class="mdl-selectfield mdl-js-selectfield" style="width:100%;">
-								<select class="mdl-selectfield__select" id="ddlBatch" name="ddlBatch">
-								  <option value="" selected></option>
-								  <option value="All">All</option>
-								</select>
-								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
-								<label class="mdl-selectfield__label" for="ddlBatch">Batch</label>
-							</div>
-							<div class="mdl-selectfield mdl-js-selectfield" style="width:100%;">
-								<select class="mdl-selectfield__select" id="ddlRole" name="ddlRole">
-								</select>
-								<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i></div>
-								<label class="mdl-selectfield__label" for="ddlRole">Role</label>
-							</div>
 							<div style="text-align:center;">
-								<button onclick="addLocation()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="width:200px;">
-								<i class="material-icons">input</i>&nbsp;&nbsp;Add Notification
-							</button>
-
+								<button onclick="addNotification()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="width:200px;">
+									<i class="material-icons">input</i>&nbsp;&nbsp;Add Notification
+								</button>
 							</div>
 						</td>
 					</tr>
@@ -135,62 +113,34 @@
 </div>
 	<script type="text/javascript" src="js/db.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/service.js"></script>
 	<script type="text/javascript" src="js/mdl-selectfield.min.js"></script>
 	<script>
-	function addDate(){
-		var len = (($("#divDateTime").children().length)/3) + 1;
-		$("#divDateTime").append(
-			'<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:30%">'+
-				'<input class="mdl-textfield__input" type="text" id="txtDate' + len + '">' +
-			'</div>'+
-			'<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:30%">'+
-				'<input class="mdl-textfield__input" type="text" id="txtStartTime' + len + '">' +
-			'</div>'+
-			'<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:30%">'+
-				'<input class="mdl-textfield__input" type="text" id="txtEndTime' + len + '">' +
-			'</div>'
-		);
+	function addNotification(){
+		successCallback = function (data) {	
+			$("#txtTitle").val("");
+			$("#txtMessage").val("");
+			$("#ddlType").val("");
+			$("#ddlTo").val("");
+			alert("Notification created and will be sent");
+		}
+		invokeService("/notification/save/" + $("#txtTitle").val() + "/" + $("#txtMessage").val() + "/" + $("#ddlType").val() + "/" + $("#ddlTo").val());
 	}
-	
-	var successCallback = function (data) {
-		var noOfLocations = data.length;
-		
-		$.each(data, function (i, item) {
-			$('#ddllocation').append($('<option>', { 
-				value: item.id,
-				text : item.name 
-			}));
-		});
-		
-		successCallback = function(data){
-			$.each(data, function (i, item) {
-				$('#tblWorkshop').append(
-					"<tr><td style='text-align:left;vertical-align:top;'>" + item.id + "</td><td style='text-align:left;vertical-align:top;'>" + item.locationName + "</td><td style='text-align:left;vertical-align:top;'>" + item.dateTimes + "</td></tr>"
-				)}
-			);
-		};
-		
-		invokeService("/workshop/list");
-	};
 	
 	var errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
 		alert('Whooops .. something not correct !!!');
 	}
-	
-	function addWorkshop(){
-		var dt = "";
-		
-		var noOfItems = ($("#divDateTime").children().length)/3;
-		
-		for(i=1; i<=noOfItems; i++){
-			dt += (dt == "") ? $("#txtDate" + i).val() + "^" + $("#txtStartTime" + i).val() + "^" + $("#txtEndTime" + i).val() 
-			: "$" + $("#txtDate" + i).val() + "^" + $("#txtStartTime" + i).val() + "^" + $("#txtEndTime" + i).val();
-		}
-		invokeService("/workshop/add/" + $( "#ddllocation").val() + "/" + dt);
-		window.location = "workshopAdmin.html";
+
+	/*var successCallback = function (data) {	
+		$.each(data, function (i, item) {
+			$('#ddlTo').append($('<option>', { 
+				value: 'GLT-' + item.name,
+				text : 'GLT-' + item.name 
+			}));
+		});
 	}
 	
-	//invokeService("/location/list");
+	invokeService("/team/list");*/
 	</script>
 </body>
 </html>

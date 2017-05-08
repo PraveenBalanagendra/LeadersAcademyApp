@@ -99,5 +99,10 @@ namespace Services
         {
             return Notification.GetNotifications(userId, notificationId);
         }
+
+        public void SaveNotification(string title, string message, string type, string to)
+        {
+            Notification.SaveNotification(title, message, type, to);
+        }
     }
 }

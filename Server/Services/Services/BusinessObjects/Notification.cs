@@ -28,5 +28,18 @@ namespace Services.BusinessObjects
             }
             return notificationData;
         }
+
+        public static void SaveNotification(string title, string message, string type, string to)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("@Title", title);
+            parameters.Add("@Message", message);
+            parameters.Add("@Type", type);
+            parameters.Add("@MessageTo", to);
+            parameters.Add("@StartDate", DateTime.Now.ToString("dd-M-yyyy"));
+            parameters.Add("@EndDate", DateTime.Now.AddDays(1).ToString("dd-M-yyyy"));
+
+            new DAL().PutData("INSERT INTO Notification(Title, Message, Type, MessageTo, StartDate, EndDate, CreatedDate) VALUES(@Title, @Message, @Type, @MessageTo, STR_TO_DATE(@StartDate, '%d-%m-%Y'), STR_TO_DATE(@EndDate, '%d-%m-%Y'), CURDATE())", parameters);
+        }
     }
 }
