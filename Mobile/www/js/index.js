@@ -6,6 +6,15 @@ $(document).ready(function(){
 	document.addEventListener("deviceready",onDeviceReady,false);
 });
 
+function hasReadPermission() {
+  window.plugins.sim.hasReadPermission(null, null);
+}
+
+// Android only: request permission
+function requestReadPermission() {
+  window.plugins.sim.requestReadPermission(null, null);
+}
+
 function onDeviceReady(){
 	if (typeof logoutFlag !== 'undefined') {
 		logout();
@@ -28,6 +37,26 @@ function onDeviceReady(){
 				setTimeout(checkNotification, 1000);
 		}, null);
 	});
+	
+	myDB.transaction(function(transaction) {
+		transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['phonenumber'], 
+		function (tx, results) {
+			var len = results.rows.length, i;
+			if(len == 0){
+				window.plugins.sim.getSimInfo(
+					function(result){
+						myDB.transaction(function(transaction) {
+							transaction.executeSql("INSERT INTO setting (description, value) VALUES(?,?)", ['phonenumber', result.phoneNumber], null, null);
+						});	
+					}, 
+					null
+				);
+			}
+		}, null);
+	});
+	
+	
+	
 }
 
 function checkNotification(){

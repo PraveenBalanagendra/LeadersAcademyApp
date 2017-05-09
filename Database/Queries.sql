@@ -33,7 +33,7 @@ UPDATE Team SET Contact = '9632723025' WHERE Id>=1;
 
 select * from Role;
 
-select * from Users;new_procedure
+select * from Users;
 select * from UserWorkshop;
 
 update UserWorkshop set WorkshopId = 3 WHERE UserId = 4;

@@ -26,10 +26,11 @@ namespace Services.BusinessObjects
         public void Authenticate()
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters.Add("@UserName", this.userName);
-            parameters.Add("@Password", this.password);
+            parameters.Add("@ContactNumber", this.userName);
+            parameters.Add("@PinNumber", this.password);
 
-            DataSet ds = new DAL().GetDataSet("SELECT Users.Id, Users.FirstName, Users.LastName, Role.Name AS RoleName FROM Users JOIN Role ON Users.RoleId = Role.Id WHERE UserName = @UserName AND Password = @Password", parameters);
+            DataSet ds = new DAL().GetDataSet("AuthenticateUser", parameters, "StoredProcedure");
+            //DataSet ds = new DAL().GetDataSet("SELECT Users.Id, Users.FirstName, Users.LastName, Role.Name AS RoleName FROM Users JOIN Role ON Users.RoleId = Role.Id WHERE Contact = @UserName AND Password = @Password", parameters);
 
             this.isAuthenticate = false;
 
