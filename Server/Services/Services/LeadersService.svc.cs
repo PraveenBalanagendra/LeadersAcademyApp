@@ -18,7 +18,12 @@ namespace Services
 
             return user; // JsonConvert.SerializeObject(user);
         }
-    
+
+        public string Register(string userName)
+        {
+            return User.Register(userName);
+        }
+
         public List<Location> GetLocation()
         {
             return Location.GetLocations();

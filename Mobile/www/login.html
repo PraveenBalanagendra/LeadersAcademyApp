@@ -70,25 +70,31 @@
 			<table class="mdl-data-table" style="white-space:wrap;width:100%;">
 				<tbody>
 					<tr>
-						<td class="mdl-data-table__cell--non-numeric">Note that we ask you to share the phone number to send customized SMS based on your association with Leaders Academy and not for any other purpose.</td>
+						<td class="mdl-data-table__cell--non-numeric">We ask you to share the phone number to send customized SMS based on your association with Leaders Academy and not for any other purpose.</td>
 					</tr>
 					<tr>
 						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
-							<input class="mdl-textfield__input" disabled type="text" id="txtUsername">
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="txtUsername">
+								<label class="mdl-textfield__label" for="sample3">Phone Number<label>
+							</div>
 						</td>
 					</tr>
 					<tr>
 						<td class="mdl-data-table__cell--non-numeric" style="white-space:wrap;">
 							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 								<input class="mdl-textfield__input" type="password" id="txtPassword">
-								<label class="mdl-textfield__label" for="sample3">Enter/Set PIN<label>
+								<label class="mdl-textfield__label" for="sample3">PIN<label>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td style="text-align:center;">
-							<button onclick="authenticateUser()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="width:200px;">
+							<button onclick="authenticateUser()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="width:130px;">
 								<i class="material-icons">input</i>&nbsp;&nbsp;Login
+							</button>
+							<button onclick="registerUser()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" style="width:130px;">
+								<i class="material-icons">vpn_key</i>&nbsp;&nbsp;Register
 							</button>
 						</td>
 					</tr>
@@ -97,46 +103,79 @@
         </div>
       </main>
     </div>
-	<div id="dialog" title="Whoopss !!!">
-		<p>Authentication Failed</p>
+	<div id="dialog" title="Status">
+		
 	</div>
 </div>
 	<script type="text/javascript" src="js/db.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript" src="js/service.js"></script>
 	<script>
-	var successCallback = function (data) {
-		if(data.isAuthenticate == false){
-			$( "#dialog" ).dialog({
-				modal: true,
-				buttons: {
-					Ok: function() {
-						$( this ).dialog( "close" );
-					}
-				}
-			});
-		}
-		else{
-			// Set the user details in the SQLite and redirect to About page
-			// myDB = window.sqlitePlugin.openDatabase({name: "leaders.db", location: 'default'});
-			myDB.transaction(function(transaction) {
-				transaction.executeSql('INSERT INTO user (firstName, lastName, role) VALUES (?,?,?)', [data.firstName,data.lastName,data.role], 
-					function(tx, results){window.location = "about.html";}, 
-					function(){alert('error');}
-				);
-			});
-		}
-	};
 	
-	var errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
-		alert('Authentication error. Please verify if the internet is turned on.');
-	}
+	var successCallback;
+	var errorCallback;
 	
 	function authenticateUser(){
+		successCallback = function (data) {
+			if(data.isAuthenticate == false){
+				$( "#dialog" ).html("<p>Authentication Failed</p>").dialog({
+					modal: true,
+					buttons: {
+						Ok: function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
+			}
+			else{
+				// Set the user details in the SQLite and redirect to About page
+				// myDB = window.sqlitePlugin.openDatabase({name: "leaders.db", location: 'default'});
+				myDB.transaction(function(transaction) {
+					transaction.executeSql('INSERT INTO user (firstName, lastName, role) VALUES (?,?,?)', [data.firstName,data.lastName,data.role], 
+						function(tx, results){window.location = "about.html";}, 
+						function(){alert('error');}
+					);
+				});
+			}
+		};
+		
+		errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
+			alert('Authentication error. Please verify if the internet is turned on.');
+		}
 		invokeService('/login/' + $('#txtUsername').val() + '/' + $('#txtPassword').val())
 	}
 	
-	setTimeout(function(){
+	function registerUser(){
+		successCallback = function (data) {
+			if(data.startsWith("Success")){
+				$( "#dialog" ).html("<p>" + data + "</p>").dialog({
+					modal: true,
+					buttons: {
+						Ok: function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
+			}
+			else{
+				$( "#dialog" ).html("<p>" + data + "</p>").dialog({
+					modal: true,
+					buttons: {
+						Ok: function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
+			}
+		};
+		
+		errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
+			alert('Whoops !!! Something went wrong');
+		}
+		invokeService('/register/' + $('#txtUsername').val())
+	}
+	
+	/*setTimeout(function(){
 		myDB.transaction(function(transaction) {
 			transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['phonenumber'], 
 				function (tx, results) {
@@ -146,7 +185,7 @@
 					$("#txtUsername").removeAttr('disabled');
 				});
 		});
-	}, 500);
+	}, 500);*/
 	</script>
 	
 </body>

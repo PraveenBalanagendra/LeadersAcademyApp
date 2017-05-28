@@ -42,7 +42,7 @@
 		<script type="text/javascript" src="js/navigation.js"></script>
       </div>
       <main class="mdl-layout__content">
-        <div class="page-content">
+        <div class="page-content" style="text-align:center;">
 <!--             <div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">
                 <div class="mdl-card__title" style="background-color:#f9d14c;">
                     <h1 class="mdl-card__title-text">Workshop</h1> <br />
@@ -128,6 +128,7 @@
                 Language: Kananda
                 </div>
             </div>-->
+			<img src="img\loading.gif" id="imgLoading" style="padding-top:20px;" />
         </div>
       </main>
     </div>
@@ -138,6 +139,7 @@
 	
 	<script>
 	var successCallback = function(data){
+		$('#imgLoading').hide();
 		$.each(data, function (i, item) {
 			$('.page-content').append(
 				'<div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">' +
@@ -174,6 +176,7 @@
 	};
 
 	var errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
+		$('#imgLoading').hide();
 		alert('Whooops .. something not correct !!!');
 	}
 	

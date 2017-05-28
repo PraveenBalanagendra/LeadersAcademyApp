@@ -4,7 +4,7 @@ $('.mdl-layout__drawer').append(
 '</span>' +
 '<b><span id="LoginUser" style="padding: 10px 0px 0px 16px;display:none;"></span></b>' +
 '<nav class="mdl-navigation">' +
-'<a class="mdl-navigation__link" href="about.html"><i class="material-icons">group</i><span id="NavigationAbout" class="content"></span></a>' +
+'<a class="mdl-navigation__link" href="about.html"><i class="material-icons">restore</i><span id="NavigationAbout" class="content"></span></a>' +
 '<a class="mdl-navigation__link" href="program.html"><i class="material-icons">group_work</i><span id="NavigationPrograms" class="content"></span></a>' +
 '<a class="mdl-navigation__link" href="contact.html"><i class="material-icons">contact_mail</i><span id="NavigationContact" class="content"></span></a>' +
 '<a class="mdl-navigation__link" href="gallery.html"><i class="material-icons">video_library</i><span id="NavigationGallery" class="content"></span></a>' +

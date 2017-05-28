@@ -15,6 +15,10 @@ namespace Services
         User Login(string userName, string password);
 
         [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/Register/{userName}", ResponseFormat = WebMessageFormat.Json)]
+        string Register(string userName);
+
+        [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/location/list", ResponseFormat = WebMessageFormat.Json)]
         List<Location> GetLocation();
 

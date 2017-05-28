@@ -43,6 +43,31 @@ namespace Services.BusinessObjects
             }
         }
 
+        public static string Register(string number)
+        {
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("@PhoneNumber", number);
+
+            DataSet ds = new DAL().GetDataSet("RegisterUser", parameters, "StoredProcedure");
+
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                if(ds.Tables[0].Rows[0]["Status"].ToString() == "Error")
+                {
+                    return "Error: " + ds.Tables[0].Rows[0]["StatusDescription"].ToString();
+                }
+                else
+                {
+                    // Send SMS
+                    //string messageResult = SMS.SendSMS(number, "Your PIN is " + ds.Tables[0].Rows[0]["PIN"].ToString());
+                    //return messageResult;
+                    return "Success: " + ds.Tables[0].Rows[0]["StatusDescription"].ToString() + " Please use the PIN " + ds.Tables[0].Rows[0]["PIN"].ToString() + " to login.";
+                }
+            }
+
+            return "Error";
+        }
+
         public void AddModifyUser()
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();

@@ -42,7 +42,9 @@
 		<script type="text/javascript" src="js/navigation.js"></script>
       </div>
       <main class="mdl-layout__content">
-        <div class="page-content">
+        <div class="page-content" style="text-align:center;">
+			<img src="img\loading.gif" id="imgLoading" style="padding-top:20px;" />
+			<span class="mdl-layout-title content" id="NotificationNoNotification" style="display:none;"></span>
         </div>
       </main>
     </div>
@@ -58,7 +60,10 @@
 		myDB.transaction(function(transaction) {
 			transaction.executeSql("SELECT id, title, message FROM notification", [], 
 				function (tx, results) {
+					$('#imgLoading').hide();
 					var len = results.rows.length, i;
+					if(len == 0)
+						$('#NotificationNoNotification').show();
 					for(var index=0; index < len; index++){
 						$('.page-content').append(
 							'<div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">' +

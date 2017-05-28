@@ -80,6 +80,7 @@
     <Compile Include="BusinessObjects\Location.cs" />
     <Compile Include="BusinessObjects\User.cs" />
     <Compile Include="BusinessObjects\Nirvana.cs" />
+    <Compile Include="BusinessObjects\Utilities.cs" />
     <Compile Include="BusinessObjects\Workshop.cs" />
     <Compile Include="DataAccess\DAL.cs" />
     <Compile Include="ILeadersService.cs" />

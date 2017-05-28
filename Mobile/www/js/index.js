@@ -38,22 +38,22 @@ function onDeviceReady(){
 		}, null);
 	});
 	
-	myDB.transaction(function(transaction) {
-		transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['phonenumber'], 
-		function (tx, results) {
-			var len = results.rows.length, i;
-			if(len == 0){
-				window.plugins.sim.getSimInfo(
-					function(result){
-						myDB.transaction(function(transaction) {
-							transaction.executeSql("INSERT INTO setting (description, value) VALUES(?,?)", ['phonenumber', result.phoneNumber], null, null);
-						});	
-					}, 
-					null
-				);
-			}
-		}, null);
-	});
+	// myDB.transaction(function(transaction) {
+		// transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['phonenumber'], 
+		// function (tx, results) {
+			// var len = results.rows.length, i;
+			// if(len == 0){
+				// window.plugins.sim.getSimInfo(
+					// function(result){
+						// myDB.transaction(function(transaction) {
+							// transaction.executeSql("INSERT INTO setting (description, value) VALUES(?,?)", ['phonenumber', result.phoneNumber], null, null);
+						// });	
+					// }, 
+					// null
+				// );
+			// }
+		// }, null);
+	// });
 	
 	
 	
