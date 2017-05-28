@@ -86,6 +86,9 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Notification','Notification','ಸೂಚನೆ'], null, null);
 		
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Notification' + 'NoNotification','No Notification','ಸೂಚನೆ ಇಲ್ಲ'], null, null);
+		
+		//transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Events' + 'ChequeHeader','Cheque or DD','ಚೆಕ್ಕು ಅಥವ ಡಿಡಿ'], null, null);
+		//transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Events' + 'ChequeDetails','In the name of "Leaders Academy for Personal Success Pvt Ltd". Crossed Cheque. Behind the cheque kindly mention your name & mobile no. Courier to: Leaders Academy, #347, 1st D Cross, 6th Block, 2nd Phase, BSK 3rd stage, Bengaluru - 560085. Mobile: 9980977955 / 9342991069.','In the name of "Leaders Academy for Personal Success Pvt Ltd". Crossed Cheque. Behind the cheque kindly mention your name & mobile no. Courier to: Leaders Academy, #347, 1st D Cross, 6th Block, 2nd Phase, BSK 3rd stage, Bengaluru - 560085. Mobile: 9980977955 / 9342991069.'], null, null);
 	});
 	
 	myDB.transaction(function(transaction) {

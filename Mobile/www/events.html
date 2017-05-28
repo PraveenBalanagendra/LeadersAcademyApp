@@ -18,10 +18,12 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" href="css/material.css">
-    <script src="js/material.min.js"></script>
-    <link rel="stylesheet" href="css/material_Icons.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/material_Icons.css">
     <link rel="stylesheet" href="css/kc.fab.css">
+    <script src="js/material.min.js"></script>
     <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
     <script src="js/kc.fab.min.js"></script>
     <title>Events</title>
 </head>
@@ -130,6 +132,54 @@
             </div>-->
 			<img src="img\loading.gif" id="imgLoading" style="padding-top:20px;" />
         </div>
+		<div id="dialog" title="Registration Payment Mode" style="display:none;width:200px">
+			<table class="mdl-data-table" style="width:100%;">
+				<tbody>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" id="EventsChequeHeader" style="white-space:wrap; font-weight:bold;">
+						Please contact us for the registration fee. (9980977955 / 9342991069)
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" id="EventsChequeHeader" style="white-space:wrap; font-weight:bold;">
+						Cheque or DD
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" id="EventsChequeDetails" style="white-space:wrap;">
+						a. In the name of "Leaders Academy for Personal Success Pvt Ltd"<br/>
+						b. Crossed Cheque<br/>
+						c. Behind the cheque kindly mention your name & mobile no.<br/>
+						d. Courier to: Leaders Academy, #347, 1st D Cross, 6th Block, 2nd Phase, BSK 3rd stage, Bengaluru - 560085 (Registered Office)<br/>
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" id="EventsCashHeader" style="white-space:wrap; font-weight:bold;">
+						Cash Payment</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" id="EventsCashDetails" style="white-space:wrap;">
+						#119, 2nd floor, Radhakrishna Sadhan, Above HDFC Bank, Gandhi Bazar Main Road, Basavanagudi, Bengaluru-04. (Administraive Office)
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" id="EventsOnlineHeader" style="white-space:wrap; font-weight:bold;">
+						Bank Transfer
+						</td>
+					</tr>
+					<tr>
+						<td class="mdl-data-table__cell--non-numeric" id="EventsOnlineDetails" style="white-space:wrap;">
+							"Leaders Academy for Personal Success Pvt. Ltd." <br/>
+							KARNATAKA Bank <br/>
+							Account No: 0972000100102901 <br/>
+							Code: KARB0000097<br/>
+							Banashankari 3rd stage<br/>
+							Bengaluru-560085
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
       </main>
     </div>
 </div>
@@ -168,7 +218,7 @@
 						((item.locationAddress == "") ? '' :
 							('<a class="mdl-navigation__link" href="geo:' + item.locationCoordinates + '?q=' + item.locationCoordinates + '(' + item.locationName + ')"><i class="material-icons">location_on</i>Location</a>&nbsp;')
 						) +
-					'<a class="mdl-navigation__link" href="javascript:alert();"><i class="material-icons">event_note</i>Register</a>' +
+					'<a class="mdl-navigation__link" href="javascript:paymentDetails();"><i class="material-icons">event_note</i>Register</a>' +
 					'</div>' +
 				'</div>'
 			)}
@@ -178,6 +228,17 @@
 	var errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
 		$('#imgLoading').hide();
 		alert('Whooops .. something not correct !!!');
+	}
+	
+	function paymentDetails(){
+		$( "#dialog" ).dialog({
+			modal: true,
+			buttons: {
+				Ok: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
 	}
 	
 	invokeService("/event/list");
