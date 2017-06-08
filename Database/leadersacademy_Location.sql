@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `leadersacademy` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `leadersacademy`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: leadersdb.ctg6ujawfiqo.us-west-2.rds.amazonaws.com    Database: leadersacademy
@@ -40,7 +38,7 @@ CREATE TABLE `Location` (
 
 LOCK TABLES `Location` WRITE;
 /*!40000 ALTER TABLE `Location` DISABLE KEYS */;
-INSERT INTO `Location` VALUES (1,'Shikshakara Sadana','Kempe Gowda Road, Behind-Fund For Teacher & Children, Kempe Gowda Road, Cubbonpete, Nagarathpete, Bengaluru, Karnataka 560002','08022483434','12.971770, 77.582736'),(2,'Jnana Jyothi','Directorate Of Distance Education, Central College Campus, Palace Rd, Ambedkar Veedhi, Gandhi Nagar, Bengaluru, Karnataka 560009','08022961000','12.975703, 77.583986'),(3,'IAT','Queens Rd, Vasanth Nagar, Bengaluru, Karnataka 560051','NA','12.987687, 77.598148');
+INSERT INTO `Location` VALUES (1,'Shikshakara Sadana','No. 32, K.G. Road, Bangalore - 560002 (Opposite Cauvery Bhavan)','08022483434','12.971770, 77.582736'),(2,'Jnana Jyothi','Directorate Of Distance Education, Central College Campus, Palace Rd, Ambedkar Veedhi, Gandhi Nagar, Bengaluru, Karnataka 560009','08022961000','12.975703, 77.583986'),(3,'IAT','Queens Rd, Vasanth Nagar, Bengaluru, Karnataka 560051','NA','12.987687, 77.598148');
 /*!40000 ALTER TABLE `Location` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-19 20:04:00
+-- Dump completed on 2017-06-08 10:11:43

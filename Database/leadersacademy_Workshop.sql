@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `leadersacademy` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `leadersacademy`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: leadersdb.ctg6ujawfiqo.us-west-2.rds.amazonaws.com    Database: leadersacademy
@@ -30,7 +28,7 @@ CREATE TABLE `Workshop` (
   PRIMARY KEY (`Id`),
   KEY `Workshop_Location_idx` (`LocationId`),
   CONSTRAINT `Workshop_Location` FOREIGN KEY (`LocationId`) REFERENCES `Location` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +37,7 @@ CREATE TABLE `Workshop` (
 
 LOCK TABLES `Workshop` WRITE;
 /*!40000 ALTER TABLE `Workshop` DISABLE KEYS */;
-INSERT INTO `Workshop` VALUES (1,1);
+INSERT INTO `Workshop` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(10,1);
 /*!40000 ALTER TABLE `Workshop` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-19 20:03:05
+-- Dump completed on 2017-06-08 10:11:29

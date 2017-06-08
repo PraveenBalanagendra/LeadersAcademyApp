@@ -16,28 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Team`
+-- Table structure for table `Notification`
 --
 
-DROP TABLE IF EXISTS `Team`;
+DROP TABLE IF EXISTS `Notification`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Team` (
+CREATE TABLE `Notification` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(45) DEFAULT NULL,
-  `Contact` varchar(45) DEFAULT NULL,
+  `Title` text,
+  `Message` text,
+  `MessageTo` varchar(45) DEFAULT NULL,
+  `EventType` varchar(45) DEFAULT NULL,
+  `Batch` varchar(45) DEFAULT NULL,
+  `Role` varchar(45) DEFAULT NULL,
+  `Type` varchar(45) DEFAULT NULL,
+  `StartDate` datetime DEFAULT NULL,
+  `EndDate` datetime DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Team`
+-- Dumping data for table `Notification`
 --
 
-LOCK TABLES `Team` WRITE;
-/*!40000 ALTER TABLE `Team` DISABLE KEYS */;
-INSERT INTO `Team` VALUES (1,'Vijayanagar','9632723025'),(2,'Ramanagara','9632723025'),(3,'Kanakapura','9632723025'),(4,'Tumkur','9632723025'),(5,'Doddaballapura','9632723025'),(6,'Soundarya','9632723025'),(7,'JP Nagar','9632723025'),(8,'Inspire','9632723025');
-/*!40000 ALTER TABLE `Team` ENABLE KEYS */;
+LOCK TABLES `Notification` WRITE;
+/*!40000 ALTER TABLE `Notification` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Notification` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-08 10:11:51
+-- Dump completed on 2017-06-08 10:10:58

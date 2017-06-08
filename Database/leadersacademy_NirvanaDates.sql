@@ -16,28 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Team`
+-- Table structure for table `NirvanaDates`
 --
 
-DROP TABLE IF EXISTS `Team`;
+DROP TABLE IF EXISTS `NirvanaDates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Team` (
+CREATE TABLE `NirvanaDates` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(45) DEFAULT NULL,
-  `Contact` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `NirvanaId` int(11) DEFAULT NULL,
+  `Day` datetime DEFAULT NULL,
+  `StartTime` varchar(5) DEFAULT NULL,
+  `EndTime` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `NirvanaDates_Nirvana_idx` (`NirvanaId`),
+  CONSTRAINT `NirvanaDates_Nirvana` FOREIGN KEY (`NirvanaId`) REFERENCES `Nirvana` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Team`
+-- Dumping data for table `NirvanaDates`
 --
 
-LOCK TABLES `Team` WRITE;
-/*!40000 ALTER TABLE `Team` DISABLE KEYS */;
-INSERT INTO `Team` VALUES (1,'Vijayanagar','9632723025'),(2,'Ramanagara','9632723025'),(3,'Kanakapura','9632723025'),(4,'Tumkur','9632723025'),(5,'Doddaballapura','9632723025'),(6,'Soundarya','9632723025'),(7,'JP Nagar','9632723025'),(8,'Inspire','9632723025');
-/*!40000 ALTER TABLE `Team` ENABLE KEYS */;
+LOCK TABLES `NirvanaDates` WRITE;
+/*!40000 ALTER TABLE `NirvanaDates` DISABLE KEYS */;
+INSERT INTO `NirvanaDates` VALUES (1,0,'2017-06-15 00:00:00','11:00','23:59'),(2,0,'2017-06-16 00:00:00','00:00','23:59'),(3,0,'2017-06-17 00:00:00','00:00','23:59'),(4,0,'2017-06-18 00:00:00','00:00','16:00');
+/*!40000 ALTER TABLE `NirvanaDates` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-08 10:11:51
+-- Dump completed on 2017-06-08 10:10:51

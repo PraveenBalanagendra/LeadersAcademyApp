@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `leadersacademy` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `leadersacademy`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: leadersdb.ctg6ujawfiqo.us-west-2.rds.amazonaws.com    Database: leadersacademy
@@ -50,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-19 20:03:43
+-- Dump completed on 2017-06-08 10:11:14
