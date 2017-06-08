@@ -18,11 +18,11 @@ function createDatabase()
 	});
 	
 	myDB.transaction(function(transaction) {
-		transaction.executeSql('CREATE TABLE IF NOT EXISTS user (firstName, lastName, role)', [], null, null);
+		transaction.executeSql('CREATE TABLE IF NOT EXISTS user (firstName text, lastName text, role text)', [], null, null);
 	});
 
 	myDB.transaction(function(transaction) {
-		transaction.executeSql('CREATE TABLE IF NOT EXISTS notification (id, title, message)', [], null, null);
+		transaction.executeSql('CREATE TABLE IF NOT EXISTS notification (id int, title text, message text)', [], null, null);
 	});
 
 	myDB.transaction(function(transaction) {

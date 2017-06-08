@@ -66,7 +66,7 @@
 						$('#NotificationNoNotification').show();
 					for(var index=0; index < len; index++){
 						$('.page-content').append(
-							'<div class="mdl-card mdl-shadow--4dp" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">' +
+							'<div class="mdl-card mdl-shadow--4dp" id="' + results.rows.item(index).id + '" style="margin: 0 auto;text-align: left;margin-top:5px; margin-bottom:10px;">' +
 								'<div class="mdl-card__title" style="background-color:#f9d14c;">' +
 									'<h1 class="mdl-card__title-text" style="font-weight:bold;">' + results.rows.item(index).title + '</h1> <br />' +
 									'<span class="mdl-card__subtitle-text" style="font-weight:bold;"></span>' +
@@ -76,7 +76,7 @@
 								'<div class="mdl-card__supporting-text">' + ' <br />' + ' <br />' + ' <br />' +
 								'</div>' +
 								'<div width="173" height="200" class="mdl-card__media" style="padding:10px;background-color:rgb(233, 247, 146);">' +
-								'<a class="mdl-navigation__link" href="javascript:alert();"><i class="material-icons">delete</i>Delete</a>' +
+								'<a class="mdl-navigation__link" href="javascript:deleteNotification(' + results.rows.item(index).id + ');"><i class="material-icons">delete</i>Delete</a>' +
 								'</div>' +
 							'</div>'
 						)
@@ -85,6 +85,13 @@
 			);
 		});
 	}, 1500);
+	
+	function deleteNotification(id){
+		$("#" + id).remove();
+		myDB.transaction(function(transaction) {
+			transaction.executeSql("DELETE FROM notification WHERE id = ?", [id], function(tx, results){alert("Notification Deleted");}, null);
+		});
+	}
 	</script>
 </body>
 
