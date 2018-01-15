@@ -82,7 +82,7 @@
                 </tr>
               </tbody>
             </table>
-            <table class="mdl-data-table mdl-js-data-table mdl-data-table" style="width: 100%">
+            <!-- <table class="mdl-data-table mdl-js-data-table mdl-data-table" style="width: 100%">
               <thead>
                 <tr>
                   <th class="mdl-data-table__cell--non-numeric" colspan="2">Notification</th>
@@ -96,6 +96,34 @@
 					</label>
 				  </td>
                 </tr>
+              </tbody>
+            </table> -->
+			<table class="mdl-data-table mdl-js-data-table mdl-data-table" style="width: 100%">
+             <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric" colspan="2">Your Phone Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+							<input class="mdl-textfield__input" type="number" id="txtPhone">
+							<!--<label class="mdl-textfield__label content" id="SettingsPhone" for="sample3"><label>-->
+						</div>
+				  </td>
+				</tr>
+				<tr>
+					<td class="mdl-data-table__cell--non-numeric content" id="SettingsWhyPhone"></td>
+				</tr>
+				<!-- <tr>
+				  <td>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+							<input class="mdl-textfield__input" type="text" id="txtName">
+							<label class="mdl-textfield__label content" id="SettingsName" for="sample3">Name<label>
+						</div>
+				  </td>
+                </tr> -->
               </tbody>
             </table>
 <!--            <br />
@@ -128,15 +156,42 @@
 	</script>
 	<script type="text/javascript" src="js/db.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/service.js"></script>
 	<script type="text/javascript">
 	function fnUpdateSettings(){
 		localStorage.clear();
 		myDB.transaction(function(transaction) {
-			transaction.executeSql("UPDATE setting set value = ? WHERE description = ?", [$("input:radio[name=language]:checked").val(), 'language'], function(txt, message){getLanguage(); window.location = "settings.html";}, null);
-			transaction.executeSql("UPDATE setting set value = ? WHERE description = ?", [($("#chkNotification").is(':checked'))?'yes':'no', 'notificationSetting'], function(txt, message){getLanguage(); window.location = "settings.html";}, null);
-		});
+			transaction.executeSql("UPDATE setting set value = ? WHERE description = ?", [$("input:radio[name=language]:checked").val(), 'language'], 
+				function(transaction){
+					transaction.executeSql("UPDATE setting set value = ? WHERE description = ?", [($("#chkNotification").is(':checked'))?'yes':'no', 'notificationSetting'], 
+						function(transaction){
+							if($('#txtPhone').val().length > 0){
+								transaction.executeSql("UPDATE setting set value = ? WHERE description = ?", [$('#txtPhone').val(), 'phonenumber'], 
+									function(){
+										successCallback = function(data){
+											getLanguage(); 
+											window.location = "settings.html";
+										};
+										
+										errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
+											alert('Whoops !!! Something went wrong');
+										}
+										
+										invokeService('/register/' + $('#txtPhone').val());
+									}, null
+								);
+							}
+							else{
+								getLanguage(); 
+								window.location = "settings.html";
+							}
+						}, null
+					);
+				}, null
+			);
+		});	
 	}
-	
+
 	setTimeout(function(){
 		myDB.transaction(function(transaction) {
 			transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['notificationSetting'], 
@@ -144,9 +199,15 @@
 					$('#chkNotification').prop('checked', results.rows.item(0).value == "yes" ? true : false);
 				}, null
 			);
+			
+			transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['phonenumber'], 
+				function (tx, results) {
+					$('#txtPhone').val(results.rows.item(0).value);
+				}, null
+			);
 		});
 	}, 500);
-	
+
 	</script>
 </body>
 

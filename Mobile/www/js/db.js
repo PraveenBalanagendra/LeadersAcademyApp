@@ -49,6 +49,7 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Contact' + 'AddressHeader','Address','ವಿಳಾಸ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Contact' + 'PhoneHeader','Phone','ಪೋನ್'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Contact' + 'EmailHeader','Email','ಇಮೇಲ್'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Contact' + 'SupportEmailHeader','Support Email','ಸಪೋರ್ಟ್ ಇಮೇಲ್'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Contact' + 'WebsiteHeader','Website','ವೆಬ್ ಸೈಟ್'], null, null);
 
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['FAQ' + '1Header','Is there any joining fee?','ಅಕಾಡೆಮಿ ಸೇರುವುದಕ್ಕೆ ಹಣ ಇದೆಯೇ?'], null, null);
@@ -59,6 +60,9 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['FAQ' + '3','At the end of the programme, if you still don’t like the programme, the amount is completely refunded with no questions asked.','ಕಾರ್ಯಕ್ರಮದ ಕೊನೆಯಲ್ಲಿ, ನಿಮಗೆ ಇನ್ನೂ ಪ್ರೋಗ್ರಾಂ ಇಷ್ಟವಾಗದಿದ್ದರೆ, ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಲ್ಲದೆ ಸಂಪೂರ್ಣವಾಗಿ ಹಣ ಮರು ಆಗಲಿದೆ '], null, null);
 
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Settings' + 'Notification','Enable/Disable', 'ಸಕ್ರಿಯಗೊಳಿಸಿ / ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Settings' + 'WhyPhone','We ask phone number for you to associate with the Academy', 'ಅಕಾಡೆಮಿಯೊಂದಿಗೆ ಸಂಯೋಜಿಸಲು ನಾವು ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ಕೇಳುತ್ತೇವೆ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Settings' + 'Name','Your Name', 'ನಿಮ್ಮ ಹೆಸರು'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Settings' + 'Phone','Your Phone number', 'ನಿಮ್ಮ ಫೋನ್ ನಂಬರ್'], null, null);
 		
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'KHeader','Kurukshetra','ಕುರುಕ್ಷೇತ್ರ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'KContent','Kurukshetra Series is about the topic and provides an in depth knowledge and clarity. The topics ranges from Family, Self Confidence, Entertainment to Enlightenment, Parenting etc.','ಕುರುಕ್ಷೇತ್ರ ಸರಣಿಯು ಯಾವುದಾದರು ವಿಷಯದ ಬಗ್ಗೆ (ಕುಟುಂಬ, ಆತ್ಮ ವಿಶ್ವಾಸ, ಎಂಟರ್ಟೈನ್ಮೆಂಟ್ಗೆ ಜ್ಞಾನೋದಯ, ಪೇರೆಂಟಿಂಗ್ ಇತ್ಯಾದಿಗಳು) ಆಳ ಜ್ಞಾನ ಮತ್ತು ಸ್ಪಷ್ಟತೆ ನೀಡುತ್ತದೆ..'], null, null);
@@ -85,7 +89,9 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Gallery','Gallery','ಗ್ಯಾಲರಿ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Navigation' + 'Notification','Notification','ಸೂಚನೆ'], null, null);
 		
-		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Notification' + 'NoNotification','No Notification','ಸೂಚನೆ ಇಲ್ಲ'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Notification' + 'NoNotification','No Notification','ಯಾವುದೇ ಸೂಚನೆಗಳೂ ಇಲ್ಲ '], null, null);
+		
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Events' + 'NoEvents','No Upcoming Events','ಯಾವುದೇ ಕಾರ್ಯಕ್ರಮಗಳು ಇಲ್ಲ'], null, null);
 		
 		//transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Events' + 'ChequeHeader','Cheque or DD','ಚೆಕ್ಕು ಅಥವ ಡಿಡಿ'], null, null);
 		//transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Events' + 'ChequeDetails','In the name of "Leaders Academy for Personal Success Pvt Ltd". Crossed Cheque. Behind the cheque kindly mention your name & mobile no. Courier to: Leaders Academy, #347, 1st D Cross, 6th Block, 2nd Phase, BSK 3rd stage, Bengaluru - 560085. Mobile: 9980977955 / 9342991069.','In the name of "Leaders Academy for Personal Success Pvt Ltd". Crossed Cheque. Behind the cheque kindly mention your name & mobile no. Courier to: Leaders Academy, #347, 1st D Cross, 6th Block, 2nd Phase, BSK 3rd stage, Bengaluru - 560085. Mobile: 9980977955 / 9342991069.'], null, null);
@@ -97,6 +103,7 @@ function createDatabase()
 			getLanguage();
 		}, null);
 		transaction.executeSql('INSERT INTO setting (description, value) VALUES (?,?)', ['notificationSetting', 'yes'], null, null);
+		transaction.executeSql('INSERT INTO setting (description, value) VALUES (?,?)', ['phonenumber', '0000000000'], null, null);
 	});
 	
 	// myDB.transaction(function(transaction) {

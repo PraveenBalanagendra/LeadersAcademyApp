@@ -63,6 +63,10 @@ function checkNotification(){
 	//alert('inside checkNotification');
 	cordova.plugins.notification.local.getTriggered(function (notifications) {
 		myDB.transaction(function(transaction) {
+		transaction.executeSql("SELECT value FROM setting WHERE description = 'phonenumber'", [], 
+		function(tx, results){
+		var len = results.rows.length, i;
+		var userId = results.rows.item(0).value;
 		transaction.executeSql("SELECT value FROM setting WHERE description = 'notificationLastPull'", [], 
 			function (tx, results) {
 				//alert('query for notificationLastPull executed');
@@ -119,9 +123,10 @@ function checkNotification(){
 					};
 					//alert(errorCallback);
 					//alert('Invoking Service with lastTriggerId: ' + lastTriggerId);
-					invokeService("/notification/list/1/" + lastTriggerId);
+					invokeService("/notification/list/" + userId + "/" + lastTriggerId);
 					//alert(invokeService);
 				}
+			}, null)
 			}, null);
 		});
 		// if(notifications.length == 0){
