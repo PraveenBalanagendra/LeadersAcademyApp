@@ -71,6 +71,7 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechContent','Speech Contest allows the member of Leaders Academy to contest for the best speech of the year.','ಭಾಷಣ ಸ್ಪರ್ಧೆಯು ಲೀಡರ್ಸ್ ಅಕಾಡೆಮಿಯ ಸದಸ್ಯರಿಗೆ ವರ್ಷದ ಅತ್ಯುತ್ತಮ ಭಾಷಣಕ್ಕಾಗಿ ಸ್ಪರ್ಧಿಸಲು ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ.'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechLink1','Tap here for Best Top 20 Speech – 2015','ಅತ್ಯುತ್ತಮ ಟಾಪ್ 20 ಸ್ಪೀಚ್ಗಾಗಿ ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ - 2015'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechLink2','Tap here for Best Top 20 Speech – 2017','ಅತ್ಯುತ್ತಮ ಟಾಪ್ 20 ಸ್ಪೀಚ್ಗಾಗಿ ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ - 2017'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'SpeechLink3','Tap here for Best Top 20 Speech – 2018','ಅತ್ಯುತ್ತಮ ಟಾಪ್ 20 ಸ್ಪೀಚ್ಗಾಗಿ ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ - 2018'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'HealthHeader','Health','ಆರೋಗ್ಯ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'HealthContent','My health my responsibility','ನನ್ನ ಆರೋಗ್ಯ ನನ್ನ ಜವಾಬ್ದಾರಿ'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Gallery' + 'HealthLink','Tap here for Episodes','ಎಪಿಸೋಡ್ಗಳಿಗಾಗಿ ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ'], null, null);
@@ -103,7 +104,7 @@ function createDatabase()
 			getLanguage();
 		}, null);
 		transaction.executeSql('INSERT INTO setting (description, value) VALUES (?,?)', ['notificationSetting', 'yes'], null, null);
-		transaction.executeSql('INSERT INTO setting (description, value) VALUES (?,?)', ['phonenumber', '0000000000'], null, null);
+		transaction.executeSql('INSERT INTO setting (description, value) VALUES (?,?)', ['phonenumber', ''], null, null);
 	});
 	
 	// myDB.transaction(function(transaction) {

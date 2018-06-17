@@ -101,7 +101,7 @@
 			<table class="mdl-data-table mdl-js-data-table mdl-data-table" style="width: 100%">
              <thead>
                 <tr>
-                  <th class="mdl-data-table__cell--non-numeric" colspan="2">Your Phone Number</th>
+                  <th class="mdl-data-table__cell--non-numeric content" colspan="2" id="SettingsPhone"></th>
                 </tr>
               </thead>
               <tbody>
@@ -203,6 +203,8 @@
 			transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['phonenumber'], 
 				function (tx, results) {
 					$('#txtPhone').val(results.rows.item(0).value);
+					if(results.rows.item(0).value.length > 0 )
+						$('#txtPhone').attr("disabled", "disabled");
 				}, null
 			);
 		});

@@ -30,13 +30,13 @@ function onDeviceReady(){
 	else 
 		populatePage();
 	
-	myDB.transaction(function(transaction) {
+	/*myDB.transaction(function(transaction) {
 		transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['notificationSetting'], 
 		function (tx, results) {
 			if(results.rows.item(0).value == "yes")
 				setTimeout(checkNotification, 1000);
 		}, null);
-	});
+	});*/
 	
 	// myDB.transaction(function(transaction) {
 		// transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['phonenumber'], 
@@ -59,6 +59,7 @@ function onDeviceReady(){
 	
 }
 
+/*
 function checkNotification(){
 	//alert('inside checkNotification');
 	cordova.plugins.notification.local.getTriggered(function (notifications) {
@@ -148,8 +149,8 @@ function checkNotification(){
 		window.location = "notification.html";
 	});
 	
-	setTimeout(checkNotification, 1000 * 60);
-}
+	//setTimeout(checkNotification, 1000 * 60);
+} */
 
 function BackKeyDown()
 {
