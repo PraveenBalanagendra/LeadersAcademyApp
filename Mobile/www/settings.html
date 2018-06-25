@@ -98,34 +98,6 @@
                 </tr>
               </tbody>
             </table> -->
-			<table class="mdl-data-table mdl-js-data-table mdl-data-table" style="width: 100%">
-             <thead>
-                <tr>
-                  <th class="mdl-data-table__cell--non-numeric content" colspan="2" id="SettingsPhone"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
-							<input class="mdl-textfield__input" type="number" id="txtPhone">
-							<!--<label class="mdl-textfield__label content" id="SettingsPhone" for="sample3"><label>-->
-						</div>
-				  </td>
-				</tr>
-				<tr>
-					<td class="mdl-data-table__cell--non-numeric content" id="SettingsWhyPhone"></td>
-				</tr>
-				<!-- <tr>
-				  <td>
-						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
-							<input class="mdl-textfield__input" type="text" id="txtName">
-							<label class="mdl-textfield__label content" id="SettingsName" for="sample3">Name<label>
-						</div>
-				  </td>
-                </tr> -->
-              </tbody>
-            </table>
 <!--            <br />
             <table class="mdl-data-table mdl-js-data-table mdl-data-table" style="width: 100%">
               <thead>
@@ -165,26 +137,8 @@
 				function(transaction){
 					transaction.executeSql("UPDATE setting set value = ? WHERE description = ?", [($("#chkNotification").is(':checked'))?'yes':'no', 'notificationSetting'], 
 						function(transaction){
-							if($('#txtPhone').val().length > 0){
-								transaction.executeSql("UPDATE setting set value = ? WHERE description = ?", [$('#txtPhone').val(), 'phonenumber'], 
-									function(){
-										successCallback = function(data){
-											getLanguage(); 
-											window.location = "settings.html";
-										};
-										
-										errorCallback = function (XMLHttpRequest, textStatus, errorThrown) {
-											alert('Whoops !!! Something went wrong');
-										}
-										
-										invokeService('/register/' + $('#txtPhone').val());
-									}, null
-								);
-							}
-							else{
-								getLanguage(); 
-								window.location = "settings.html";
-							}
+							getLanguage(); 
+							window.location = "settings.html";
 						}, null
 					);
 				}, null
@@ -200,13 +154,13 @@
 				}, null
 			);
 			
-			transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['phonenumber'], 
+			/*transaction.executeSql("SELECT value FROM setting WHERE description = ?", ['phonenumber'], 
 				function (tx, results) {
 					$('#txtPhone').val(results.rows.item(0).value);
 					if(results.rows.item(0).value.length > 0 )
 						$('#txtPhone').attr("disabled", "disabled");
 				}, null
-			);
+			);*/
 		});
 	}, 500);
 

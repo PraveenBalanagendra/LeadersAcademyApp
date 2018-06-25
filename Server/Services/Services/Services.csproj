@@ -73,6 +73,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\Message.cs" />
     <Compile Include="BusinessObjects\Notification.cs" />
     <Compile Include="BusinessObjects\Events.cs" />
     <Compile Include="BusinessObjects\Master.cs" />

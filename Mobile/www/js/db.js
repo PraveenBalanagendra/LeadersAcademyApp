@@ -51,6 +51,7 @@ function createDatabase()
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Contact' + 'EmailHeader','Email','ಇಮೇಲ್'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Contact' + 'SupportEmailHeader','Support Email','ಸಪೋರ್ಟ್ ಇಮೇಲ್'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Contact' + 'WebsiteHeader','Website','ವೆಬ್ ಸೈಟ್'], null, null);
+		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['Contact' + 'MessageHeader','Send Message','ಸಂದೇಶ ಕಳುಹಿಸಿ'], null, null);
 
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['FAQ' + '1Header','Is there any joining fee?','ಅಕಾಡೆಮಿ ಸೇರುವುದಕ್ಕೆ ಹಣ ಇದೆಯೇ?'], null, null);
 		transaction.executeSql('INSERT INTO content (description, english, kannada) VALUES (?,?,?)', ['FAQ' + '2Header','How many people have undergone training?','ಎಷ್ಟು ಜನ ಅಕಾಡೆಮಿ ಸೇರಿದ್ದಾರೆ?'], null, null);

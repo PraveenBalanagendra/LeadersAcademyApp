@@ -11,8 +11,8 @@ $('.mdl-layout__drawer').append(
 '<a class="mdl-navigation__link" href="faq.html"><i class="material-icons">question_answer</i><span id="NavigationFAQ" class="content"></span></a>' +
 '<a class="mdl-navigation__link" href="events.html"><i class="material-icons">event</i><span id="NavigationEvents" class="content"></span></a>' +
 /*'<a class="mdl-navigation__link" href="login.html" id="login"><i class="material-icons">input</i><span id="NavigationLogin" class="content"></span></a>' +
-'<a class="mdl-navigation__link" href="logout.html" id="logout"><i class="material-icons">input</i><span id="NavigationLogout" class="content"></span></a>' +*/
-'<a class="mdl-navigation__link" href="notification.html"><i class="material-icons">notifications</i><span id="NavigationNotification" class="content"></span></a>' +
+'<a class="mdl-navigation__link" href="logout.html" id="logout"><i class="material-icons">input</i><span id="NavigationLogout" class="content"></span></a>' +
+'<a class="mdl-navigation__link" href="notification.html"><i class="material-icons">notifications</i><span id="NavigationNotification" class="content"></span></a>' +*/
 '<a class="mdl-navigation__link" href="settings.html"><i class="material-icons">settings</i><span id="NavigationSettings" class="content"></span></a>' +
 '<div id="divAdmin">' +
 '<p style="font-weight:bold; margin-left: 16px;">Admin</p>' +

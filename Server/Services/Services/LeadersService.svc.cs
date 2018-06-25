@@ -109,5 +109,10 @@ namespace Services
         {
             Notification.SaveNotification(title, message, type, to);
         }
+
+        public void SaveMessage(string name, string phonenumber, string message)
+        {
+            Message.AddMessage(name, phonenumber, message);
+        }
     }
 }

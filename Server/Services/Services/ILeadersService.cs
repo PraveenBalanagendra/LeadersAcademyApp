@@ -69,5 +69,9 @@ namespace Services
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/notification/save/{title}/{message}/{type}/{to}", ResponseFormat = WebMessageFormat.Json)]
         void SaveNotification(string title, string message, string type, string to);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/savemessage/{name}/{phonenumber}/{message}", ResponseFormat = WebMessageFormat.Json)]
+        void SaveMessage(string name, string phonenumber, string message);
     }
 }
