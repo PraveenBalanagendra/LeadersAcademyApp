@@ -15,7 +15,7 @@ namespace Services.BusinessObjects
 
         public static List<Events> GetEvents()
         {
-            DataSet events = new DAL().GetDataSet("GetEvents", null, "StoredProcedure");
+            DataSet events = new DAL().GetDataSet("	SELECT w.Id, 'Workshop' EventType, l.Name, l.Address, l.GeoCoordinates, wd.Day FROM Workshop w JOIN Location l ON w.LocationId = l.Id JOIN WorkshopDates wd ON wd.WorkshopId = w.Id WHERE wd.Id IN(SELECT Id FROM(SELECT Id, MIN(Day) Day FROM WorkshopDates GROUP BY Id)a WHERE Day > CURDATE()) UNION ALL SELECT n.Id, 'Nirvana' EventType, 'Unknown' Name, '' Address, '' GeoCoordinates, nd.Day FROM Nirvana n JOIN NirvanaDates nd ON nd.NirvanaId = n.Id WHERE nd.Id IN(SELECT Id FROM(SELECT Id, MIN(Day) Day FROM NirvanaDates GROUP BY Id)a WHERE Day > CURDATE()) ORDER BY Day ASC;", null);
 
             List<Events> eventsData = new List<Events>();
 
