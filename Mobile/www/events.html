@@ -130,6 +130,7 @@
                 Language: Kananda
                 </div>
             </div>-->
+			<br />
 			<img src="img\loading.gif" id="imgLoading" style="padding-top:20px;" />
 			<span class="mdl-layout-title content" id="EventsNoEvents" style="display:none;"></span>
         </div>
@@ -244,7 +245,7 @@
 		});
 	}
 	
-	invokeService("/event/list");
+	setTimeout(function(){invokeService("/event/list");}, 1000);
 	</script>
 </body>
 

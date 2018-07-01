@@ -4,8 +4,8 @@ function invokeService(URL)
 	$.ajax({
 		type: "GET",
 		dataType: 'jsonp',
-		//url: "http://leaders-dev.us-west-2.elasticbeanstalk.com/leadersservice.svc" + URL,
-		url: "http://praveen:3232/leadersservice.svc" + URL,
+		url: "http://leadersacademyapp.biz/leadersservice.svc" + URL, // HostGator
+		//url: "http://praveen:3232/leadersservice.svc" + URL, // Local
 		success: successCallback,
 		error: errorCallback
 	});

@@ -162,7 +162,7 @@
 				alert('Message sent. We shall get back to you at the earliest.');
 				$("#txtName").val(""); $("#txtPhoneNumber").val(""); $("#txtMessage").val("");
 			}
-			invokeService('/saveMessage/' + encodeURIComponent($("#txtName").val()) + "/" + encodeURI($("#txtPhoneNumber").val().replace("+","")) + "/" + encodeURIComponent($("#txtMessage").val().replace(/\n/g, " ")));
+			invokeService('/saveMessage/' + encodeURIComponent($("#txtName").val()) + "/" + encodeURI($("#txtPhoneNumber").val().replace("+","")) + "/" + encodeURIComponent($("#txtMessage").val().replace(/\n/g, " ").replace("?", "")));
 		}
 	</script>
 </body>

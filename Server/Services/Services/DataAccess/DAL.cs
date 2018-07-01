@@ -14,8 +14,8 @@ namespace Services.DataAccess
         public DAL()
         {
             //connection.ConnectionString = "Server=leadersdb.ctg6ujawfiqo.us-west-2.rds.amazonaws.com;Port=3306;Database=leadersacademy;Uid=awsdbpb;Pwd=Welcome123; "; // AWS
-            //connection.ConnectionString = "Server=103.21.45:5;Port=3306;Database=leadersacademy;Uid=praveen;Pwd=Welcome@123; "; // Hostgator
-            connection.ConnectionString = "Server=127.0.0.1;Port=3306;Database=leadersacademy;Uid=root;Pwd=Welcome@123$$; "; // Local
+            connection.ConnectionString = "Server=103.21.58.5;Port=3306;Database=leadersacademy;Uid=praveen;Pwd=Welcome@123; "; // Hostgator
+            //connection.ConnectionString = "Server=127.0.0.1;Port=3306;Database=leadersacademy;Uid=root;Pwd=Welcome@123$$; "; // Local
         }
 
         public DataSet GetDataSet(string query, Dictionary<string, string> parameters, string commandType = "Text")
